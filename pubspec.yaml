@@ -52,6 +52,8 @@ dependencies:
   retrofit: ^4.1.0
   dartx: ^1.2.0
   bitsdojo_window: ^0.1.6
+  sudoku_dart: ^1.1.0
+  riverpod: ^2.5.1
 
 dev_dependencies:
   flutter_test:
