@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'sudoku/sudoku.dart';
 
 class ContentWidget extends StatelessWidget {
   const ContentWidget({super.key});
@@ -7,9 +8,9 @@ class ContentWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home'),
+        title: const Text('数独'),
       ),
-      body: Container(),
+      body: const SudokuPlayingWidget(),
     );
   }
 }

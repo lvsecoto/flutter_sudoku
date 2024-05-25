@@ -26,18 +26,19 @@ class SudokuManager {
   SudokuGameState createGame() {
     final generatedSudoku = sudoku.Sudoku.generate(sudoku.Level.easy);
     return SudokuGameState(
+      matrix: const SudokuMatrix(),
       puzzle: SudokuGamePuzzle(
         masked: PartSudoku(
-          numbers: generatedSudoku.puzzle
-              .map(
-                (it) {
-                  if (it == -1) return null;
-                  return it;
-                },
-              )
-              .toList(),
+          numbers: generatedSudoku.puzzle.map(
+            (it) {
+              if (it == -1) return null;
+              return SudokuNumber(it);
+            },
+          ).toList(),
         ),
-        plain: CompletedSudoku(numbers: generatedSudoku.solution),
+        plain: CompletedSudoku(
+          numbers: generatedSudoku.solution.map(SudokuNumber.new).toList(),
+        ),
       ),
       solution: Sudoku.empty(),
     );

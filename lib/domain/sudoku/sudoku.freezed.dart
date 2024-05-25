@@ -15,8 +15,125 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
+mixin _$SudokuNumber {
+  int get number => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $SudokuNumberCopyWith<SudokuNumber> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SudokuNumberCopyWith<$Res> {
+  factory $SudokuNumberCopyWith(
+          SudokuNumber value, $Res Function(SudokuNumber) then) =
+      _$SudokuNumberCopyWithImpl<$Res, SudokuNumber>;
+  @useResult
+  $Res call({int number});
+}
+
+/// @nodoc
+class _$SudokuNumberCopyWithImpl<$Res, $Val extends SudokuNumber>
+    implements $SudokuNumberCopyWith<$Res> {
+  _$SudokuNumberCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? number = null,
+  }) {
+    return _then(_value.copyWith(
+      number: null == number
+          ? _value.number
+          : number // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$SudokuNumberImplCopyWith<$Res>
+    implements $SudokuNumberCopyWith<$Res> {
+  factory _$$SudokuNumberImplCopyWith(
+          _$SudokuNumberImpl value, $Res Function(_$SudokuNumberImpl) then) =
+      __$$SudokuNumberImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int number});
+}
+
+/// @nodoc
+class __$$SudokuNumberImplCopyWithImpl<$Res>
+    extends _$SudokuNumberCopyWithImpl<$Res, _$SudokuNumberImpl>
+    implements _$$SudokuNumberImplCopyWith<$Res> {
+  __$$SudokuNumberImplCopyWithImpl(
+      _$SudokuNumberImpl _value, $Res Function(_$SudokuNumberImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? number = null,
+  }) {
+    return _then(_$SudokuNumberImpl(
+      null == number
+          ? _value.number
+          : number // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SudokuNumberImpl implements _SudokuNumber {
+  const _$SudokuNumberImpl(this.number);
+
+  @override
+  final int number;
+
+  @override
+  String toString() {
+    return 'SudokuNumber(number: $number)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SudokuNumberImpl &&
+            (identical(other.number, number) || other.number == number));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, number);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SudokuNumberImplCopyWith<_$SudokuNumberImpl> get copyWith =>
+      __$$SudokuNumberImplCopyWithImpl<_$SudokuNumberImpl>(this, _$identity);
+}
+
+abstract class _SudokuNumber implements SudokuNumber {
+  const factory _SudokuNumber(final int number) = _$SudokuNumberImpl;
+
+  @override
+  int get number;
+  @override
+  @JsonKey(ignore: true)
+  _$$SudokuNumberImplCopyWith<_$SudokuNumberImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$CompletedSudoku {
-  List<int> get numbers => throw _privateConstructorUsedError;
+  List<SudokuNumber> get numbers => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CompletedSudokuCopyWith<CompletedSudoku> get copyWith =>
@@ -29,7 +146,7 @@ abstract class $CompletedSudokuCopyWith<$Res> {
           CompletedSudoku value, $Res Function(CompletedSudoku) then) =
       _$CompletedSudokuCopyWithImpl<$Res, CompletedSudoku>;
   @useResult
-  $Res call({List<int> numbers});
+  $Res call({List<SudokuNumber> numbers});
 }
 
 /// @nodoc
@@ -51,7 +168,7 @@ class _$CompletedSudokuCopyWithImpl<$Res, $Val extends CompletedSudoku>
       numbers: null == numbers
           ? _value.numbers
           : numbers // ignore: cast_nullable_to_non_nullable
-              as List<int>,
+              as List<SudokuNumber>,
     ) as $Val);
   }
 }
@@ -64,7 +181,7 @@ abstract class _$$CompletedSudokuImplCopyWith<$Res>
       __$$CompletedSudokuImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<int> numbers});
+  $Res call({List<SudokuNumber> numbers});
 }
 
 /// @nodoc
@@ -84,7 +201,7 @@ class __$$CompletedSudokuImplCopyWithImpl<$Res>
       numbers: null == numbers
           ? _value._numbers
           : numbers // ignore: cast_nullable_to_non_nullable
-              as List<int>,
+              as List<SudokuNumber>,
     ));
   }
 }
@@ -92,12 +209,12 @@ class __$$CompletedSudokuImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$CompletedSudokuImpl implements _CompletedSudoku {
-  const _$CompletedSudokuImpl({required final List<int> numbers})
+  const _$CompletedSudokuImpl({required final List<SudokuNumber> numbers})
       : _numbers = numbers;
 
-  final List<int> _numbers;
+  final List<SudokuNumber> _numbers;
   @override
-  List<int> get numbers {
+  List<SudokuNumber> get numbers {
     if (_numbers is EqualUnmodifiableListView) return _numbers;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_numbers);
@@ -128,12 +245,13 @@ class _$CompletedSudokuImpl implements _CompletedSudoku {
           this, _$identity);
 }
 
-abstract class _CompletedSudoku implements CompletedSudoku {
-  const factory _CompletedSudoku({required final List<int> numbers}) =
+abstract class _CompletedSudoku
+    implements CompletedSudoku, Sudoku<SudokuNumber> {
+  const factory _CompletedSudoku({required final List<SudokuNumber> numbers}) =
       _$CompletedSudokuImpl;
 
   @override
-  List<int> get numbers;
+  List<SudokuNumber> get numbers;
   @override
   @JsonKey(ignore: true)
   _$$CompletedSudokuImplCopyWith<_$CompletedSudokuImpl> get copyWith =>
@@ -142,7 +260,7 @@ abstract class _CompletedSudoku implements CompletedSudoku {
 
 /// @nodoc
 mixin _$PartSudoku {
-  List<int?> get numbers => throw _privateConstructorUsedError;
+  List<SudokuNumber?> get numbers => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PartSudokuCopyWith<PartSudoku> get copyWith =>
@@ -155,7 +273,7 @@ abstract class $PartSudokuCopyWith<$Res> {
           PartSudoku value, $Res Function(PartSudoku) then) =
       _$PartSudokuCopyWithImpl<$Res, PartSudoku>;
   @useResult
-  $Res call({List<int?> numbers});
+  $Res call({List<SudokuNumber?> numbers});
 }
 
 /// @nodoc
@@ -177,7 +295,7 @@ class _$PartSudokuCopyWithImpl<$Res, $Val extends PartSudoku>
       numbers: null == numbers
           ? _value.numbers
           : numbers // ignore: cast_nullable_to_non_nullable
-              as List<int?>,
+              as List<SudokuNumber?>,
     ) as $Val);
   }
 }
@@ -190,7 +308,7 @@ abstract class _$$PartSudokuImplCopyWith<$Res>
       __$$PartSudokuImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<int?> numbers});
+  $Res call({List<SudokuNumber?> numbers});
 }
 
 /// @nodoc
@@ -210,7 +328,7 @@ class __$$PartSudokuImplCopyWithImpl<$Res>
       numbers: null == numbers
           ? _value._numbers
           : numbers // ignore: cast_nullable_to_non_nullable
-              as List<int?>,
+              as List<SudokuNumber?>,
     ));
   }
 }
@@ -218,12 +336,12 @@ class __$$PartSudokuImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$PartSudokuImpl implements _PartSudoku {
-  const _$PartSudokuImpl({required final List<int?> numbers})
+  const _$PartSudokuImpl({required final List<SudokuNumber?> numbers})
       : _numbers = numbers;
 
-  final List<int?> _numbers;
+  final List<SudokuNumber?> _numbers;
   @override
-  List<int?> get numbers {
+  List<SudokuNumber?> get numbers {
     if (_numbers is EqualUnmodifiableListView) return _numbers;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_numbers);
@@ -253,12 +371,12 @@ class _$PartSudokuImpl implements _PartSudoku {
       __$$PartSudokuImplCopyWithImpl<_$PartSudokuImpl>(this, _$identity);
 }
 
-abstract class _PartSudoku implements PartSudoku {
-  const factory _PartSudoku({required final List<int?> numbers}) =
+abstract class _PartSudoku implements PartSudoku, Sudoku<SudokuNumber?> {
+  const factory _PartSudoku({required final List<SudokuNumber?> numbers}) =
       _$PartSudokuImpl;
 
   @override
-  List<int?> get numbers;
+  List<SudokuNumber?> get numbers;
   @override
   @JsonKey(ignore: true)
   _$$PartSudokuImplCopyWith<_$PartSudokuImpl> get copyWith =>
@@ -383,6 +501,126 @@ abstract class _SudokuIndex implements SudokuIndex {
   @override
   @JsonKey(ignore: true)
   _$$SudokuIndexImplCopyWith<_$SudokuIndexImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$SudokuMatrix {
+  int get dimension => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $SudokuMatrixCopyWith<SudokuMatrix> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SudokuMatrixCopyWith<$Res> {
+  factory $SudokuMatrixCopyWith(
+          SudokuMatrix value, $Res Function(SudokuMatrix) then) =
+      _$SudokuMatrixCopyWithImpl<$Res, SudokuMatrix>;
+  @useResult
+  $Res call({int dimension});
+}
+
+/// @nodoc
+class _$SudokuMatrixCopyWithImpl<$Res, $Val extends SudokuMatrix>
+    implements $SudokuMatrixCopyWith<$Res> {
+  _$SudokuMatrixCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? dimension = null,
+  }) {
+    return _then(_value.copyWith(
+      dimension: null == dimension
+          ? _value.dimension
+          : dimension // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$SudokuMatrixImplCopyWith<$Res>
+    implements $SudokuMatrixCopyWith<$Res> {
+  factory _$$SudokuMatrixImplCopyWith(
+          _$SudokuMatrixImpl value, $Res Function(_$SudokuMatrixImpl) then) =
+      __$$SudokuMatrixImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int dimension});
+}
+
+/// @nodoc
+class __$$SudokuMatrixImplCopyWithImpl<$Res>
+    extends _$SudokuMatrixCopyWithImpl<$Res, _$SudokuMatrixImpl>
+    implements _$$SudokuMatrixImplCopyWith<$Res> {
+  __$$SudokuMatrixImplCopyWithImpl(
+      _$SudokuMatrixImpl _value, $Res Function(_$SudokuMatrixImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? dimension = null,
+  }) {
+    return _then(_$SudokuMatrixImpl(
+      dimension: null == dimension
+          ? _value.dimension
+          : dimension // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SudokuMatrixImpl extends _SudokuMatrix {
+  const _$SudokuMatrixImpl({this.dimension = 9}) : super._();
+
+  @override
+  @JsonKey()
+  final int dimension;
+
+  @override
+  String toString() {
+    return 'SudokuMatrix(dimension: $dimension)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SudokuMatrixImpl &&
+            (identical(other.dimension, dimension) ||
+                other.dimension == dimension));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, dimension);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SudokuMatrixImplCopyWith<_$SudokuMatrixImpl> get copyWith =>
+      __$$SudokuMatrixImplCopyWithImpl<_$SudokuMatrixImpl>(this, _$identity);
+}
+
+abstract class _SudokuMatrix extends SudokuMatrix {
+  const factory _SudokuMatrix({final int dimension}) = _$SudokuMatrixImpl;
+  const _SudokuMatrix._() : super._();
+
+  @override
+  int get dimension;
+  @override
+  @JsonKey(ignore: true)
+  _$$SudokuMatrixImplCopyWith<_$SudokuMatrixImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -558,6 +796,8 @@ abstract class _SudokuGamePuzzle implements SudokuGamePuzzle {
 
 /// @nodoc
 mixin _$SudokuGameState {
+  SudokuMatrix get matrix => throw _privateConstructorUsedError;
+
   /// 数独的谜题
   SudokuGamePuzzle get puzzle => throw _privateConstructorUsedError;
 
@@ -575,8 +815,10 @@ abstract class $SudokuGameStateCopyWith<$Res> {
           SudokuGameState value, $Res Function(SudokuGameState) then) =
       _$SudokuGameStateCopyWithImpl<$Res, SudokuGameState>;
   @useResult
-  $Res call({SudokuGamePuzzle puzzle, PartSudoku solution});
+  $Res call(
+      {SudokuMatrix matrix, SudokuGamePuzzle puzzle, PartSudoku solution});
 
+  $SudokuMatrixCopyWith<$Res> get matrix;
   $SudokuGamePuzzleCopyWith<$Res> get puzzle;
   $PartSudokuCopyWith<$Res> get solution;
 }
@@ -594,10 +836,15 @@ class _$SudokuGameStateCopyWithImpl<$Res, $Val extends SudokuGameState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? matrix = null,
     Object? puzzle = null,
     Object? solution = null,
   }) {
     return _then(_value.copyWith(
+      matrix: null == matrix
+          ? _value.matrix
+          : matrix // ignore: cast_nullable_to_non_nullable
+              as SudokuMatrix,
       puzzle: null == puzzle
           ? _value.puzzle
           : puzzle // ignore: cast_nullable_to_non_nullable
@@ -607,6 +854,14 @@ class _$SudokuGameStateCopyWithImpl<$Res, $Val extends SudokuGameState>
           : solution // ignore: cast_nullable_to_non_nullable
               as PartSudoku,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SudokuMatrixCopyWith<$Res> get matrix {
+    return $SudokuMatrixCopyWith<$Res>(_value.matrix, (value) {
+      return _then(_value.copyWith(matrix: value) as $Val);
+    });
   }
 
   @override
@@ -634,8 +889,11 @@ abstract class _$$SudokuGameStateImplCopyWith<$Res>
       __$$SudokuGameStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({SudokuGamePuzzle puzzle, PartSudoku solution});
+  $Res call(
+      {SudokuMatrix matrix, SudokuGamePuzzle puzzle, PartSudoku solution});
 
+  @override
+  $SudokuMatrixCopyWith<$Res> get matrix;
   @override
   $SudokuGamePuzzleCopyWith<$Res> get puzzle;
   @override
@@ -653,10 +911,15 @@ class __$$SudokuGameStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? matrix = null,
     Object? puzzle = null,
     Object? solution = null,
   }) {
     return _then(_$SudokuGameStateImpl(
+      matrix: null == matrix
+          ? _value.matrix
+          : matrix // ignore: cast_nullable_to_non_nullable
+              as SudokuMatrix,
       puzzle: null == puzzle
           ? _value.puzzle
           : puzzle // ignore: cast_nullable_to_non_nullable
@@ -672,7 +935,11 @@ class __$$SudokuGameStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SudokuGameStateImpl implements _SudokuGameState {
-  const _$SudokuGameStateImpl({required this.puzzle, required this.solution});
+  const _$SudokuGameStateImpl(
+      {required this.matrix, required this.puzzle, required this.solution});
+
+  @override
+  final SudokuMatrix matrix;
 
   /// 数独的谜题
   @override
@@ -684,7 +951,7 @@ class _$SudokuGameStateImpl implements _SudokuGameState {
 
   @override
   String toString() {
-    return 'SudokuGameState(puzzle: $puzzle, solution: $solution)';
+    return 'SudokuGameState(matrix: $matrix, puzzle: $puzzle, solution: $solution)';
   }
 
   @override
@@ -692,13 +959,14 @@ class _$SudokuGameStateImpl implements _SudokuGameState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SudokuGameStateImpl &&
+            (identical(other.matrix, matrix) || other.matrix == matrix) &&
             (identical(other.puzzle, puzzle) || other.puzzle == puzzle) &&
             (identical(other.solution, solution) ||
                 other.solution == solution));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, puzzle, solution);
+  int get hashCode => Object.hash(runtimeType, matrix, puzzle, solution);
 
   @JsonKey(ignore: true)
   @override
@@ -710,9 +978,12 @@ class _$SudokuGameStateImpl implements _SudokuGameState {
 
 abstract class _SudokuGameState implements SudokuGameState {
   const factory _SudokuGameState(
-      {required final SudokuGamePuzzle puzzle,
+      {required final SudokuMatrix matrix,
+      required final SudokuGamePuzzle puzzle,
       required final PartSudoku solution}) = _$SudokuGameStateImpl;
 
+  @override
+  SudokuMatrix get matrix;
   @override
 
   /// 数独的谜题

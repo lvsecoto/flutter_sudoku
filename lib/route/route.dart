@@ -8,7 +8,7 @@ part 'route.g.dart';
 
 final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
 
-const _homeTypedRoute =TypedGoRoute<HomeRoute>(
+const _homeTypedRoute = TypedGoRoute<HomeRoute>(
   path: '/home',
 );
 
@@ -20,12 +20,10 @@ class HomeRoute extends GoRouteData {
   static final GlobalKey<NavigatorState> $parentNavigatorKey = rootNavigatorKey;
 
   @override
-  Widget build(BuildContext context, GoRouterState state) =>
-      HomeScreen();
+  Widget build(BuildContext context, GoRouterState state) => const HomeScreen();
 }
 
 class GoRouteData extends go_router.GoRouteData {
-
   /// 替换默认的路由实现
   const GoRouteData();
 
@@ -57,7 +55,6 @@ class _DefaultCustomPage<T> extends MaterialPage<T> {
 
 class _DefaultCustomPageRoute<T> extends PageRoute<T>
     with MaterialRouteTransitionMixin<T> {
-
   _DefaultCustomPageRoute({
     required MaterialPage<T> page,
     super.allowSnapshotting,
