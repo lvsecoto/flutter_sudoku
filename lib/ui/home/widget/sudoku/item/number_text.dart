@@ -3,13 +3,15 @@ import 'package:flutter_sudoku/ui/home/provider/provider.dart' as provider;
 import 'package:flutter/material.dart';
 
 class SudokuNumberTextWidget extends StatelessWidget {
-
   /// 数独文本
   const SudokuNumberTextWidget({
     super.key,
+    required this.canEdit,
     required this.number,
     required this.colorState,
   });
+
+  final bool canEdit;
 
   final provider.SudokuNumber? number;
 
@@ -18,14 +20,21 @@ class SudokuNumberTextWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final primaryTextStyle = Theme.of(context).textTheme.titleMedium!;
+    final color = switch (colorState) {
+      provider.SudokuNumberColorState.normal =>
+        primaryTextStyle.color!.withOpacity(1),
+      provider.SudokuNumberColorState.invalid => Colors.red,
+      provider.SudokuNumberColorState.completed => Colors.green,
+      provider.SudokuNumberColorState.edited =>
+        Theme.of(context).colorScheme.primary,
+    };
     return Text(
       number?.number.toString() ?? '',
       style: primaryTextStyle.copyWith(
-        fontWeight: colorState != provider.SudokuNumberColorState.normal ? FontWeight.bold : null,
-        color: switch(colorState) {
-          provider.SudokuNumberColorState.normal => primaryTextStyle.color!.withOpacity(0.58),
-          provider.SudokuNumberColorState.edited => Theme.of(context).colorScheme.primary,
-        },
+        fontWeight: FontWeight.w400,
+        decoration: canEdit ? TextDecoration.underline : null,
+        decorationColor: color,
+        color: color,
       ),
     );
   }

@@ -27,6 +27,7 @@ class SudokuNumberItemWidget extends StatelessWidget {
               padding: const EdgeInsets.all(2.0),
               child: Consumer(
                 builder: (context, ref, _) {
+                  final canEdit = provider.watchSudokuIndexCanEdit(ref, index);
                   final number = provider.watchSudokuNumber(ref, index);
                   final color = provider.watchSudokuNumberColor(ref, index);
                   return AnimatedSwitcher(
@@ -35,6 +36,7 @@ class SudokuNumberItemWidget extends StatelessWidget {
                       key: ValueKey(number?.number),
                       child: SudokuNumberTextWidget(
                         number: number,
+                        canEdit: canEdit,
                         colorState: color,
                       ),
                     ),

@@ -50,6 +50,7 @@ class SudokuIndex with _$SudokuIndex {
   /// 数独数字索引，对数独数字进行定位
   const factory SudokuIndex({
     required SudokuMatrix matrix,
+
     /// 直接用索引定位
     required int index,
   }) = _SudokuIndex;
@@ -98,4 +99,16 @@ class SudokuGameState with _$SudokuGameState {
     /// 用户数独解决状态
     required PartSudoku solution,
   }) = _SudokuGameState;
+}
+
+@freezed
+class SudokuValidation with _$SudokuValidation {
+  /// 数独校验结果
+  const factory SudokuValidation({
+    /// 不合法的索引
+    required List<SudokuIndex> invalid,
+
+    /// 已经完成的索引
+    required List<SudokuIndex> completed,
+  }) = _SudokuValidation;
 }

@@ -1,10 +1,11 @@
 import 'dart:math';
+import 'package:dartx/dartx.dart';
 
 import '../sudoku.dart';
 
 part 'relation.dart';
 part 'editing.dart';
-part 'state.dart';
+part 'invalidate.dart';
 
 extension SudokuGameStateEx on SudokuGameState {
   /// 获取数独数字，合并用户填充和未填充时，谜题中的数字

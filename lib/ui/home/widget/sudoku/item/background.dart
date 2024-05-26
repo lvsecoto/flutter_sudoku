@@ -21,6 +21,7 @@ class SudokuNumberBackgroundWidget extends ConsumerWidget {
       color: switch(colorState) {
         provider.SudokuBackgroundColorState.normal => Colors.transparent,
         provider.SudokuBackgroundColorState.relateToCurrentInput => Theme.of(context).colorScheme.primary.withOpacity(0.12),
+        provider.SudokuBackgroundColorState.relateToCurrentInputAndSameWithInvalid => Colors.red.withOpacity(0.12),
       },
       child: child,
     );

@@ -1029,3 +1029,171 @@ abstract class _SudokuGameState implements SudokuGameState {
   _$$SudokuGameStateImplCopyWith<_$SudokuGameStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+/// @nodoc
+mixin _$SudokuValidation {
+  /// 不合法的索引
+  List<SudokuIndex> get invalid => throw _privateConstructorUsedError;
+
+  /// 已经完成的索引
+  List<SudokuIndex> get completed => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $SudokuValidationCopyWith<SudokuValidation> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SudokuValidationCopyWith<$Res> {
+  factory $SudokuValidationCopyWith(
+          SudokuValidation value, $Res Function(SudokuValidation) then) =
+      _$SudokuValidationCopyWithImpl<$Res, SudokuValidation>;
+  @useResult
+  $Res call({List<SudokuIndex> invalid, List<SudokuIndex> completed});
+}
+
+/// @nodoc
+class _$SudokuValidationCopyWithImpl<$Res, $Val extends SudokuValidation>
+    implements $SudokuValidationCopyWith<$Res> {
+  _$SudokuValidationCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? invalid = null,
+    Object? completed = null,
+  }) {
+    return _then(_value.copyWith(
+      invalid: null == invalid
+          ? _value.invalid
+          : invalid // ignore: cast_nullable_to_non_nullable
+              as List<SudokuIndex>,
+      completed: null == completed
+          ? _value.completed
+          : completed // ignore: cast_nullable_to_non_nullable
+              as List<SudokuIndex>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$SudokuValidationImplCopyWith<$Res>
+    implements $SudokuValidationCopyWith<$Res> {
+  factory _$$SudokuValidationImplCopyWith(_$SudokuValidationImpl value,
+          $Res Function(_$SudokuValidationImpl) then) =
+      __$$SudokuValidationImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({List<SudokuIndex> invalid, List<SudokuIndex> completed});
+}
+
+/// @nodoc
+class __$$SudokuValidationImplCopyWithImpl<$Res>
+    extends _$SudokuValidationCopyWithImpl<$Res, _$SudokuValidationImpl>
+    implements _$$SudokuValidationImplCopyWith<$Res> {
+  __$$SudokuValidationImplCopyWithImpl(_$SudokuValidationImpl _value,
+      $Res Function(_$SudokuValidationImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? invalid = null,
+    Object? completed = null,
+  }) {
+    return _then(_$SudokuValidationImpl(
+      invalid: null == invalid
+          ? _value._invalid
+          : invalid // ignore: cast_nullable_to_non_nullable
+              as List<SudokuIndex>,
+      completed: null == completed
+          ? _value._completed
+          : completed // ignore: cast_nullable_to_non_nullable
+              as List<SudokuIndex>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SudokuValidationImpl implements _SudokuValidation {
+  const _$SudokuValidationImpl(
+      {required final List<SudokuIndex> invalid,
+      required final List<SudokuIndex> completed})
+      : _invalid = invalid,
+        _completed = completed;
+
+  /// 不合法的索引
+  final List<SudokuIndex> _invalid;
+
+  /// 不合法的索引
+  @override
+  List<SudokuIndex> get invalid {
+    if (_invalid is EqualUnmodifiableListView) return _invalid;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_invalid);
+  }
+
+  /// 已经完成的索引
+  final List<SudokuIndex> _completed;
+
+  /// 已经完成的索引
+  @override
+  List<SudokuIndex> get completed {
+    if (_completed is EqualUnmodifiableListView) return _completed;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_completed);
+  }
+
+  @override
+  String toString() {
+    return 'SudokuValidation(invalid: $invalid, completed: $completed)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SudokuValidationImpl &&
+            const DeepCollectionEquality().equals(other._invalid, _invalid) &&
+            const DeepCollectionEquality()
+                .equals(other._completed, _completed));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_invalid),
+      const DeepCollectionEquality().hash(_completed));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SudokuValidationImplCopyWith<_$SudokuValidationImpl> get copyWith =>
+      __$$SudokuValidationImplCopyWithImpl<_$SudokuValidationImpl>(
+          this, _$identity);
+}
+
+abstract class _SudokuValidation implements SudokuValidation {
+  const factory _SudokuValidation(
+      {required final List<SudokuIndex> invalid,
+      required final List<SudokuIndex> completed}) = _$SudokuValidationImpl;
+
+  @override
+
+  /// 不合法的索引
+  List<SudokuIndex> get invalid;
+  @override
+
+  /// 已经完成的索引
+  List<SudokuIndex> get completed;
+  @override
+  @JsonKey(ignore: true)
+  _$$SudokuValidationImplCopyWith<_$SudokuValidationImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
