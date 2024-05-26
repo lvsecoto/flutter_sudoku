@@ -12,9 +12,18 @@ class CurrentSudokuGameState extends _$CurrentSudokuGameState
 
 /// 重新开始游戏
 void actionRecreateGame(WidgetRef ref, SudokuLevel level) {
-  final sudoku = ref.read(sudokuManagerProvider).createGame(level: level);
+  final newSudoku = ref.read(sudokuManagerProvider).createGame(level: level);
   ref.read(currentInputSudokuIndexProvider.notifier).clear();
-  ref.read(currentSudokuGameStateProvider.notifier).select(sudoku);
+  ref
+      .read(currentSudokuGameStateProvider.notifier)
+      .updateWith((state) => newSudoku);
+}
+
+/// 重新开始游戏
+void actionResetGame(WidgetRef ref) {
+  ref.read(currentSudokuGameStateProvider.notifier).updateWith((state) {
+    return state.clearAll();
+  });
 }
 
 /// 观察数独数字表格的列数

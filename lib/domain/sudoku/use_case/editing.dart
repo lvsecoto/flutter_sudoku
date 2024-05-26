@@ -12,6 +12,15 @@ extension SudokuEditing on SudokuGameState {
       ),
     );
   }
+
+  /// 玩家清除所有输入
+  SudokuGameState clearAll() {
+    return copyWith(
+      solution: solution.copyWith(
+        numbers: const [],
+      ),
+    );
+  }
 }
 
 /// 判断数独是否可以编辑

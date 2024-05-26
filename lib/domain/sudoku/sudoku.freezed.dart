@@ -851,6 +851,10 @@ abstract class _SudokuGamePuzzle implements SudokuGamePuzzle {
 
 /// @nodoc
 mixin _$SudokuGameState {
+  /// 游戏的id
+  int get id => throw _privateConstructorUsedError;
+
+  /// 数独的规格
   SudokuMatrix get matrix => throw _privateConstructorUsedError;
 
   /// 数独的谜题
@@ -871,7 +875,10 @@ abstract class $SudokuGameStateCopyWith<$Res> {
       _$SudokuGameStateCopyWithImpl<$Res, SudokuGameState>;
   @useResult
   $Res call(
-      {SudokuMatrix matrix, SudokuGamePuzzle puzzle, PartSudoku solution});
+      {int id,
+      SudokuMatrix matrix,
+      SudokuGamePuzzle puzzle,
+      PartSudoku solution});
 
   $SudokuMatrixCopyWith<$Res> get matrix;
   $SudokuGamePuzzleCopyWith<$Res> get puzzle;
@@ -891,11 +898,16 @@ class _$SudokuGameStateCopyWithImpl<$Res, $Val extends SudokuGameState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? matrix = null,
     Object? puzzle = null,
     Object? solution = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       matrix: null == matrix
           ? _value.matrix
           : matrix // ignore: cast_nullable_to_non_nullable
@@ -945,7 +957,10 @@ abstract class _$$SudokuGameStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {SudokuMatrix matrix, SudokuGamePuzzle puzzle, PartSudoku solution});
+      {int id,
+      SudokuMatrix matrix,
+      SudokuGamePuzzle puzzle,
+      PartSudoku solution});
 
   @override
   $SudokuMatrixCopyWith<$Res> get matrix;
@@ -966,11 +981,16 @@ class __$$SudokuGameStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? matrix = null,
     Object? puzzle = null,
     Object? solution = null,
   }) {
     return _then(_$SudokuGameStateImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       matrix: null == matrix
           ? _value.matrix
           : matrix // ignore: cast_nullable_to_non_nullable
@@ -991,8 +1011,16 @@ class __$$SudokuGameStateImplCopyWithImpl<$Res>
 
 class _$SudokuGameStateImpl implements _SudokuGameState {
   const _$SudokuGameStateImpl(
-      {required this.matrix, required this.puzzle, required this.solution});
+      {required this.id,
+      required this.matrix,
+      required this.puzzle,
+      required this.solution});
 
+  /// 游戏的id
+  @override
+  final int id;
+
+  /// 数独的规格
   @override
   final SudokuMatrix matrix;
 
@@ -1006,7 +1034,7 @@ class _$SudokuGameStateImpl implements _SudokuGameState {
 
   @override
   String toString() {
-    return 'SudokuGameState(matrix: $matrix, puzzle: $puzzle, solution: $solution)';
+    return 'SudokuGameState(id: $id, matrix: $matrix, puzzle: $puzzle, solution: $solution)';
   }
 
   @override
@@ -1014,6 +1042,7 @@ class _$SudokuGameStateImpl implements _SudokuGameState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SudokuGameStateImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.matrix, matrix) || other.matrix == matrix) &&
             (identical(other.puzzle, puzzle) || other.puzzle == puzzle) &&
             (identical(other.solution, solution) ||
@@ -1021,7 +1050,7 @@ class _$SudokuGameStateImpl implements _SudokuGameState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, matrix, puzzle, solution);
+  int get hashCode => Object.hash(runtimeType, id, matrix, puzzle, solution);
 
   @JsonKey(ignore: true)
   @override
@@ -1033,11 +1062,18 @@ class _$SudokuGameStateImpl implements _SudokuGameState {
 
 abstract class _SudokuGameState implements SudokuGameState {
   const factory _SudokuGameState(
-      {required final SudokuMatrix matrix,
+      {required final int id,
+      required final SudokuMatrix matrix,
       required final SudokuGamePuzzle puzzle,
       required final PartSudoku solution}) = _$SudokuGameStateImpl;
 
   @override
+
+  /// 游戏的id
+  int get id;
+  @override
+
+  /// 数独的规格
   SudokuMatrix get matrix;
   @override
 

@@ -6,7 +6,7 @@ part of 'provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$homeTitleHash() => r'8156f81c47ea799785568a91549488ee3055a184';
+String _$homeTitleHash() => r'a20bde8b644d5ae150a6b88c03866e8a65ea6bbe';
 
 /// See also [homeTitle].
 @ProviderFor(homeTitle)
@@ -384,7 +384,7 @@ final currentSudokuGameStateProvider = AutoDisposeNotifierProvider<
 
 typedef _$CurrentSudokuGameState = AutoDisposeNotifier<SudokuGameState>;
 String _$currentInputSudokuIndexHash() =>
-    r'4f8c4f5c64f25b17518aa42ec7bfa106ced1deff';
+    r'fe9596bcb3950c5778b9482eaad37079dc26ca44';
 
 /// 当前正在输入的数独索引
 ///

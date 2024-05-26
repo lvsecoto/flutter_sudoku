@@ -22,7 +22,6 @@ abstract class Sudoku<T extends SudokuNumber?> {
   List<T> get numbers;
 
   /// 生成一个完全为空的数独序列
-  /// todo 用Matrix生成
   static PartSudoku empty() {
     return PartSudoku(
       numbers: List.filled(81, null),
@@ -34,7 +33,7 @@ abstract class Sudoku<T extends SudokuNumber?> {
 extension SudokuEx<T extends SudokuNumber?> on Sudoku<T> {
   /// 用索引获取数独数字
   T getNumber(SudokuIndex index) {
-    return numbers[index.index];
+    return numbers.elementAtOrNull(index.index) as T;
   }
 }
 
@@ -102,6 +101,10 @@ class SudokuGamePuzzle with _$SudokuGamePuzzle {
 class SudokuGameState with _$SudokuGameState {
   /// 数独的游戏状态
   const factory SudokuGameState({
+    /// 游戏的id
+    required final int id,
+
+    /// 数独的规格
     required final SudokuMatrix matrix,
 
     /// 数独的谜题

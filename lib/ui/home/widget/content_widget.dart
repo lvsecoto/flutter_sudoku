@@ -16,6 +16,7 @@ class ContentWidget extends StatelessWidget {
               Text(ref.watch(provider.homeTitleProvider)),
         ),
         actions: const [
+          ResetGameActionWidget(),
           CreateGameActionWidget(),
         ],
       ),

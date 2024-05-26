@@ -33,6 +33,7 @@ class SudokuManager {
       SudokuLevel.expert => sudoku.Level.expert,
     });
     return SudokuGameState(
+      id: DateTime.now().microsecondsSinceEpoch,
       matrix: SudokuMatrix(
         level: level,
       ),
