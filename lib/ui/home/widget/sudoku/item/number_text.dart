@@ -28,13 +28,16 @@ class SudokuNumberTextWidget extends StatelessWidget {
       provider.SudokuNumberColorState.edited =>
         Theme.of(context).colorScheme.primary,
     };
-    return Text(
-      number?.number.toString() ?? '',
+    return AnimatedDefaultTextStyle(
+      duration: Durations.short4,
       style: primaryTextStyle.copyWith(
         fontWeight: FontWeight.w400,
         decoration: canEdit ? TextDecoration.underline : null,
         decorationColor: color,
         color: color,
+      ),
+      child: Text(
+        number?.number.toString() ?? '',
       ),
     );
   }
