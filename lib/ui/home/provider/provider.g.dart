@@ -39,5 +39,24 @@ final currentSudokuGameStateProvider = AutoDisposeNotifierProvider<
 );
 
 typedef _$CurrentSudokuGameState = AutoDisposeNotifier<SudokuGameState>;
+String _$currentInputSudokuIndexHash() =>
+    r'4d998a4addb8124f7e156c8baae379eff67c22d6';
+
+/// 当前正在输入的数独索引
+///
+/// Copied from [CurrentInputSudokuIndex].
+@ProviderFor(CurrentInputSudokuIndex)
+final currentInputSudokuIndexProvider =
+    AutoDisposeNotifierProvider<CurrentInputSudokuIndex, SudokuIndex?>.internal(
+  CurrentInputSudokuIndex.new,
+  name: r'currentInputSudokuIndexProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$currentInputSudokuIndexHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$CurrentInputSudokuIndex = AutoDisposeNotifier<SudokuIndex?>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

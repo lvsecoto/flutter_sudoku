@@ -10,7 +10,17 @@ class ContentWidget extends StatelessWidget {
       appBar: AppBar(
         title: const Text('数独'),
       ),
-      body: const SudokuPlayingWidget(),
+      body: const SafeArea(
+        bottom: true,
+        child: Column(
+          children: [
+            Expanded(
+              child: SudokuPlayingWidget(),
+            ),
+            SudokuInputWidget(),
+          ],
+        ),
+      ),
     );
   }
 }

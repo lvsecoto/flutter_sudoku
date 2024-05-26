@@ -5,6 +5,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'item/item.dart';
 import 'background.dart';
 
+export 'input/input.dart';
+
 class SudokuPlayingWidget extends ConsumerWidget {
   /// 数独游戏进行显示组件，大小是正方形
   ///

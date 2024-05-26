@@ -245,8 +245,7 @@ class _$CompletedSudokuImpl implements _CompletedSudoku {
           this, _$identity);
 }
 
-abstract class _CompletedSudoku
-    implements CompletedSudoku, Sudoku<SudokuNumber> {
+abstract class _CompletedSudoku implements CompletedSudoku {
   const factory _CompletedSudoku({required final List<SudokuNumber> numbers}) =
       _$CompletedSudokuImpl;
 
@@ -371,7 +370,7 @@ class _$PartSudokuImpl implements _PartSudoku {
       __$$PartSudokuImplCopyWithImpl<_$PartSudokuImpl>(this, _$identity);
 }
 
-abstract class _PartSudoku implements PartSudoku, Sudoku<SudokuNumber?> {
+abstract class _PartSudoku implements PartSudoku {
   const factory _PartSudoku({required final List<SudokuNumber?> numbers}) =
       _$PartSudokuImpl;
 
@@ -801,7 +800,7 @@ mixin _$SudokuGameState {
   /// 数独的谜题
   SudokuGamePuzzle get puzzle => throw _privateConstructorUsedError;
 
-  /// 数独解决状态
+  /// 用户数独解决状态
   PartSudoku get solution => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -945,7 +944,7 @@ class _$SudokuGameStateImpl implements _SudokuGameState {
   @override
   final SudokuGamePuzzle puzzle;
 
-  /// 数独解决状态
+  /// 用户数独解决状态
   @override
   final PartSudoku solution;
 
@@ -990,7 +989,7 @@ abstract class _SudokuGameState implements SudokuGameState {
   SudokuGamePuzzle get puzzle;
   @override
 
-  /// 数独解决状态
+  /// 用户数独解决状态
   PartSudoku get solution;
   @override
   @JsonKey(ignore: true)
