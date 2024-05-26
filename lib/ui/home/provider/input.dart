@@ -10,6 +10,11 @@ class CurrentInputSudokuIndex extends _$CurrentInputSudokuIndex with SelectableN
   }
 }
 
+/// 观察数独索引[index]是否正在被编辑中
+bool watchIsSudokuIndexEditing(WidgetRef ref, SudokuIndex index) {
+  return ref.watch(currentInputSudokuIndexProvider.select((it) => it == index));
+}
+
 /// 操作：选择数独索引
 void actionSelectSudokuIndex(WidgetRef ref, SudokuIndex index) {
   ref.read(currentInputSudokuIndexProvider.notifier).select(index);

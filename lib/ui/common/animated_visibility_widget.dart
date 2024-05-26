@@ -105,11 +105,9 @@ class _AnimatedVisibilityWidgetState extends State<AnimatedVisibilityWidget>
       duration: widget.duration,
     )..addStatusListener((status) {
         if (status == AnimationStatus.completed) {
-          if (_animationController.value == 1.0) {
-            widget.onDone?.call(true);
-          } else if (_animationController.value == 0.0) {
-            widget.onDone?.call(false);
-          }
+          widget.onDone?.call(true);
+        } else if (status == AnimationStatus.dismissed) {
+          widget.onDone?.call(false);
         }
       });
     _animation = CurvedAnimation(
