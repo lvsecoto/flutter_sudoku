@@ -23,10 +23,19 @@ class SudokuManager {
   SudokuManager(this._ref);
 
   /// 创建数独游戏
-  SudokuGameState createGame() {
-    final generatedSudoku = sudoku.Sudoku.generate(sudoku.Level.easy);
+  SudokuGameState createGame({
+    SudokuLevel level = SudokuLevel.easy,
+  }) {
+    final generatedSudoku = sudoku.Sudoku.generate(switch (level) {
+      SudokuLevel.easy => sudoku.Level.easy,
+      SudokuLevel.medium => sudoku.Level.medium,
+      SudokuLevel.hard => sudoku.Level.hard,
+      SudokuLevel.expert => sudoku.Level.expert,
+    });
     return SudokuGameState(
-      matrix: const SudokuMatrix(),
+      matrix: SudokuMatrix(
+        level: level,
+      ),
       puzzle: SudokuGamePuzzle(
         masked: PartSudoku(
           numbers: generatedSudoku.puzzle.map(

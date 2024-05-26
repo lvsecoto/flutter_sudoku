@@ -2,11 +2,18 @@ part of 'provider.dart';
 
 /// 当前正在输入的数独索引
 @riverpod
-class CurrentInputSudokuIndex extends _$CurrentInputSudokuIndex with SelectableNotifier {
+class CurrentInputSudokuIndex extends _$CurrentInputSudokuIndex
+    with SelectableNotifier {
   @override
   SudokuIndex? build() {
-    ref.keepAlive();
-    return null;
+    return ref.watch(_selectGameState(
+      (state) {
+        // 自动找到第一个空白项，作为初次输入的数独索引
+        final firstEmptyIndex =
+            state.puzzle.masked.numbers.indexWhere((it) => it == null);
+        return SudokuIndex(matrix: state.matrix, index: firstEmptyIndex);
+      },
+    ));
   }
 }
 
@@ -26,7 +33,7 @@ List<SudokuNumber> watchSudokuInputNumbers(WidgetRef ref) {
     final dimension = state.matrix.dimension;
     return List.generate(
       dimension,
-          (index) => SudokuNumber(index + 1),
+      (index) => SudokuNumber(index + 1),
     ).toList();
   }));
 }
@@ -55,8 +62,11 @@ int watchSelectedSudokuNumbersIndex(WidgetRef ref) {
 void actionFillInputSudokuNumber(WidgetRef ref, SudokuNumber number) {
   final currentIndex = ref.read(currentInputSudokuIndexProvider);
   if (currentIndex != null) {
-    _updateGameState(ref, (state) {
-      return state.fill(currentIndex, number);
-    },);
+    _updateGameState(
+      ref,
+      (state) {
+        return state.fill(currentIndex, number);
+      },
+    );
   }
 }

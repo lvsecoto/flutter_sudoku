@@ -3,11 +3,18 @@ part of 'provider.dart';
 /// 数独当前游戏状态
 @riverpod
 class CurrentSudokuGameState extends _$CurrentSudokuGameState
-    with UpdateWithNotifier {
+    with UpdateWithNotifier, SelectableNotifier {
   @override
   SudokuGameState build() {
     return ref.watch(sudokuManagerProvider).createGame();
   }
+}
+
+/// 重新开始游戏
+void actionRecreateGame(WidgetRef ref, SudokuLevel level) {
+  final sudoku = ref.read(sudokuManagerProvider).createGame(level: level);
+  ref.read(currentInputSudokuIndexProvider.notifier).clear();
+  ref.read(currentSudokuGameStateProvider.notifier).select(sudoku);
 }
 
 /// 观察数独数字表格的列数

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sudoku/ui/home/provider/provider.dart' as provider;
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'sudoku/sudoku.dart';
+import 'actions/actions.dart';
 
 class ContentWidget extends StatelessWidget {
   const ContentWidget({super.key});
@@ -8,7 +11,13 @@ class ContentWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('数独'),
+        title: Consumer(
+          builder: (context, ref, _) =>
+              Text(ref.watch(provider.homeTitleProvider)),
+        ),
+        actions: const [
+          CreateGameActionWidget(),
+        ],
       ),
       body: const SafeArea(
         bottom: true,

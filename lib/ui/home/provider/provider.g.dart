@@ -6,20 +6,20 @@ part of 'provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$homeHash() => r'89fc42a4b9f3a1dee036d9c0dab4281d205e1eb4';
+String _$homeTitleHash() => r'8156f81c47ea799785568a91549488ee3055a184';
 
-/// See also [home].
-@ProviderFor(home)
-final homeProvider = AutoDisposeProvider<String>.internal(
-  home,
-  name: r'homeProvider',
+/// See also [homeTitle].
+@ProviderFor(homeTitle)
+final homeTitleProvider = AutoDisposeProvider<String>.internal(
+  homeTitle,
+  name: r'homeTitleProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$homeHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$homeTitleHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef HomeRef = AutoDisposeProviderRef<String>;
+typedef HomeTitleRef = AutoDisposeProviderRef<String>;
 String _$sudokuValidationHash() => r'09cfeabb3638c73fd3dbfc5db8affe4096044e5d';
 
 /// 数独校验结果
@@ -220,7 +220,7 @@ final inputRelatedIndexesProvider =
 
 typedef InputRelatedIndexesRef = AutoDisposeProviderRef<List<SudokuIndex>>;
 String _$sudokuBackgroundColorHash() =>
-    r'ca6b3edcb409726d8986a93a0d88f92b328aac71';
+    r'd171e46bab9b5fb7878b042f1ba39ee6759ba52a';
 
 /// 根据索引，决定数字的背景颜色
 ///
@@ -365,7 +365,7 @@ class _SudokuBackgroundColorProviderElement
 }
 
 String _$currentSudokuGameStateHash() =>
-    r'3cdff69eb26cf838f02d1a203dbf0de555c284ee';
+    r'b82d49804f2f19bb611652fb474e33510ce92f5f';
 
 /// 数独当前游戏状态
 ///

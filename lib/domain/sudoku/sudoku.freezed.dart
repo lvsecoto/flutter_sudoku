@@ -538,6 +538,8 @@ abstract class _SudokuIndex implements SudokuIndex {
 
 /// @nodoc
 mixin _$SudokuMatrix {
+  /// 难度
+  SudokuLevel get level => throw _privateConstructorUsedError;
   int get dimension => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -551,7 +553,7 @@ abstract class $SudokuMatrixCopyWith<$Res> {
           SudokuMatrix value, $Res Function(SudokuMatrix) then) =
       _$SudokuMatrixCopyWithImpl<$Res, SudokuMatrix>;
   @useResult
-  $Res call({int dimension});
+  $Res call({SudokuLevel level, int dimension});
 }
 
 /// @nodoc
@@ -567,9 +569,14 @@ class _$SudokuMatrixCopyWithImpl<$Res, $Val extends SudokuMatrix>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? level = null,
     Object? dimension = null,
   }) {
     return _then(_value.copyWith(
+      level: null == level
+          ? _value.level
+          : level // ignore: cast_nullable_to_non_nullable
+              as SudokuLevel,
       dimension: null == dimension
           ? _value.dimension
           : dimension // ignore: cast_nullable_to_non_nullable
@@ -586,7 +593,7 @@ abstract class _$$SudokuMatrixImplCopyWith<$Res>
       __$$SudokuMatrixImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int dimension});
+  $Res call({SudokuLevel level, int dimension});
 }
 
 /// @nodoc
@@ -600,9 +607,14 @@ class __$$SudokuMatrixImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? level = null,
     Object? dimension = null,
   }) {
     return _then(_$SudokuMatrixImpl(
+      level: null == level
+          ? _value.level
+          : level // ignore: cast_nullable_to_non_nullable
+              as SudokuLevel,
       dimension: null == dimension
           ? _value.dimension
           : dimension // ignore: cast_nullable_to_non_nullable
@@ -614,15 +626,20 @@ class __$$SudokuMatrixImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SudokuMatrixImpl extends _SudokuMatrix {
-  const _$SudokuMatrixImpl({this.dimension = 9}) : super._();
+  const _$SudokuMatrixImpl({this.level = SudokuLevel.easy, this.dimension = 9})
+      : super._();
 
+  /// 难度
+  @override
+  @JsonKey()
+  final SudokuLevel level;
   @override
   @JsonKey()
   final int dimension;
 
   @override
   String toString() {
-    return 'SudokuMatrix(dimension: $dimension)';
+    return 'SudokuMatrix(level: $level, dimension: $dimension)';
   }
 
   @override
@@ -630,12 +647,13 @@ class _$SudokuMatrixImpl extends _SudokuMatrix {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SudokuMatrixImpl &&
+            (identical(other.level, level) || other.level == level) &&
             (identical(other.dimension, dimension) ||
                 other.dimension == dimension));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, dimension);
+  int get hashCode => Object.hash(runtimeType, level, dimension);
 
   @JsonKey(ignore: true)
   @override
@@ -645,9 +663,14 @@ class _$SudokuMatrixImpl extends _SudokuMatrix {
 }
 
 abstract class _SudokuMatrix extends SudokuMatrix {
-  const factory _SudokuMatrix({final int dimension}) = _$SudokuMatrixImpl;
+  const factory _SudokuMatrix({final SudokuLevel level, final int dimension}) =
+      _$SudokuMatrixImpl;
   const _SudokuMatrix._() : super._();
 
+  @override
+
+  /// 难度
+  SudokuLevel get level;
   @override
   int get dimension;
   @override

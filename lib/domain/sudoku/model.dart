@@ -1,5 +1,14 @@
 part of 'sudoku.dart';
 
+/// 难度
+enum SudokuLevel {
+  easy,
+  medium,
+  hard,
+  expert,
+  ;
+}
+
 /// 数独数字
 @freezed
 class SudokuNumber with _$SudokuNumber {
@@ -62,6 +71,8 @@ class SudokuMatrix with _$SudokuMatrix {
 
   /// 数独的大小规格，默认为9 * 9
   const factory SudokuMatrix({
+    /// 难度
+    @Default(SudokuLevel.easy) SudokuLevel level,
     @Default(9) int dimension,
   }) = _SudokuMatrix;
 
