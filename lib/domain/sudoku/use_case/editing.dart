@@ -13,3 +13,13 @@ extension SudokuEditing on SudokuGameState {
     );
   }
 }
+
+/// 判断数独是否可以编辑
+extension SudokuEditable on SudokuGameState {
+  /// 索引[index]是否可以填充
+  ///
+  /// 挖空的可以被填充
+  bool canFill(SudokuIndex index) {
+    return puzzle.masked.getNumber(index) == null;
+  }
+}

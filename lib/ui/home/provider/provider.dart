@@ -8,6 +8,7 @@ export 'package:flutter_sudoku/domain/sudoku/sudoku.dart' show SudokuIndex, Sudo
 
 part 'sudoku.dart';
 part 'input.dart';
+part 'state.dart';
 part 'provider.g.dart';
 
 @riverpod

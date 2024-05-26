@@ -17,10 +17,8 @@ class SudokuNumberItemWidget extends ConsumerWidget {
     final number = provider.watchSudokuNumber(ref, index);
     return IndicateSudokuNumberEditingWidget(
       index: index,
-      child: InkWell(
-        onTap: () {
-          provider.actionSelectSudokuIndex(ref, index);
-        },
+      child: _EditNumber(
+        index: index,
         child: FittedBox(
           child: Padding(
             padding: const EdgeInsets.all(2.0),
@@ -37,6 +35,28 @@ class SudokuNumberItemWidget extends ConsumerWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class _EditNumber extends ConsumerWidget {
+  const _EditNumber({
+    required this.index,
+    required this.child,
+  });
+
+  final Widget child;
+
+  final provider.SudokuIndex index;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final canEdit = provider.watchSudokuIndexCanEdit(ref, index);
+    return InkWell(
+      onTap: canEdit ? () {
+        provider.actionSelectSudokuIndex(ref, index);
+      }: null,
+      child: child,
     );
   }
 }

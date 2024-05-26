@@ -51,7 +51,6 @@ int watchSelectedSudokuNumbersIndex(WidgetRef ref) {
   return numbers.indexOf(selectedNumber);
 }
 
-
 /// 操作：填充[number]到当前正在输入的索引上
 void actionFillInputSudokuNumber(WidgetRef ref, SudokuNumber number) {
   final currentIndex = ref.read(currentInputSudokuIndexProvider);
