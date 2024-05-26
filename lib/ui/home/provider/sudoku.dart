@@ -21,21 +21,18 @@ int watchSudokuNumbersCount(WidgetRef ref) {
 }
 
 /// 根据数字表格的一个索引[gridIndex]，获取对应的`数独索引`
-SudokuIndex getSudokuNumberIndex(int gridIndex) {
+SudokuIndex getSudokuNumberIndex(WidgetRef ref, int gridIndex) {
   // 目前和表格索引一致
-  return SudokuIndex(index: gridIndex);
+  return SudokuIndex(
+    matrix: ref.watch(_selectGameState((state) => state.matrix)),
+    index: gridIndex,
+  );
 }
 
 /// 观察在`数独索引`上的数字
 SudokuNumber? watchSudokuNumber(WidgetRef ref, SudokuIndex index) {
   return ref.watch(
-    _selectGameState((state) {
-      return
-          // 没被遮盖的数字，优先显示
-          state.puzzle.masked.getNumber(index) ??
-              // 然后显示编辑中的数字
-              state.solution.getNumber(index);
-    }),
+    _selectGameState((state) => state.getNumber(index)),
   );
 }
 

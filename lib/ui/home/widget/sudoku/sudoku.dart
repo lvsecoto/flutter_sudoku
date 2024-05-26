@@ -32,8 +32,10 @@ class SudokuPlayingWidget extends ConsumerWidget {
               childAspectRatio: 1 / 1,
             ),
             itemCount: count,
-            itemBuilder: (context, index) => SudokuNumberItemWidget(
-              index: provider.getSudokuNumberIndex(index),
+            itemBuilder: (context, index) => Consumer(
+              builder: (context, ref, _) => SudokuNumberItemWidget(
+                index: provider.getSudokuNumberIndex(ref, index),
+              ),
             ),
           ),
         ),

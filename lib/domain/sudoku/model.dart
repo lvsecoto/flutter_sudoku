@@ -49,6 +49,7 @@ class PartSudoku with _$PartSudoku implements Sudoku<SudokuNumber?> {
 class SudokuIndex with _$SudokuIndex {
   /// 数独数字索引，对数独数字进行定位
   const factory SudokuIndex({
+    required SudokuMatrix matrix,
     /// 直接用索引定位
     required int index,
   }) = _SudokuIndex;

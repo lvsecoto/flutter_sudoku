@@ -20,8 +20,25 @@ final homeProvider = AutoDisposeProvider<String>.internal(
 );
 
 typedef HomeRef = AutoDisposeProviderRef<String>;
+String _$inputRelatedIndexesHash() =>
+    r'2bf611f0812a5257911a6ff0092ce788bb88fd2e';
+
+/// See also [inputRelatedIndexes].
+@ProviderFor(inputRelatedIndexes)
+final inputRelatedIndexesProvider =
+    AutoDisposeProvider<List<SudokuIndex>>.internal(
+  inputRelatedIndexes,
+  name: r'inputRelatedIndexesProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$inputRelatedIndexesHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef InputRelatedIndexesRef = AutoDisposeProviderRef<List<SudokuIndex>>;
 String _$currentSudokuGameStateHash() =>
-    r'18baab9381e746a37b2c7ac57ad8a7e6b05ef380';
+    r'3cdff69eb26cf838f02d1a203dbf0de555c284ee';
 
 /// 数独当前游戏状态
 ///
@@ -40,7 +57,7 @@ final currentSudokuGameStateProvider = AutoDisposeNotifierProvider<
 
 typedef _$CurrentSudokuGameState = AutoDisposeNotifier<SudokuGameState>;
 String _$currentInputSudokuIndexHash() =>
-    r'4d998a4addb8124f7e156c8baae379eff67c22d6';
+    r'4f8c4f5c64f25b17518aa42ec7bfa106ced1deff';
 
 /// 当前正在输入的数独索引
 ///

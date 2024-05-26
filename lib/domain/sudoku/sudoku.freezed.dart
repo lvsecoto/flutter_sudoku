@@ -384,6 +384,8 @@ abstract class _PartSudoku implements PartSudoku {
 
 /// @nodoc
 mixin _$SudokuIndex {
+  SudokuMatrix get matrix => throw _privateConstructorUsedError;
+
   /// 直接用索引定位
   int get index => throw _privateConstructorUsedError;
 
@@ -398,7 +400,9 @@ abstract class $SudokuIndexCopyWith<$Res> {
           SudokuIndex value, $Res Function(SudokuIndex) then) =
       _$SudokuIndexCopyWithImpl<$Res, SudokuIndex>;
   @useResult
-  $Res call({int index});
+  $Res call({SudokuMatrix matrix, int index});
+
+  $SudokuMatrixCopyWith<$Res> get matrix;
 }
 
 /// @nodoc
@@ -414,14 +418,27 @@ class _$SudokuIndexCopyWithImpl<$Res, $Val extends SudokuIndex>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? matrix = null,
     Object? index = null,
   }) {
     return _then(_value.copyWith(
+      matrix: null == matrix
+          ? _value.matrix
+          : matrix // ignore: cast_nullable_to_non_nullable
+              as SudokuMatrix,
       index: null == index
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
               as int,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SudokuMatrixCopyWith<$Res> get matrix {
+    return $SudokuMatrixCopyWith<$Res>(_value.matrix, (value) {
+      return _then(_value.copyWith(matrix: value) as $Val);
+    });
   }
 }
 
@@ -433,7 +450,10 @@ abstract class _$$SudokuIndexImplCopyWith<$Res>
       __$$SudokuIndexImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int index});
+  $Res call({SudokuMatrix matrix, int index});
+
+  @override
+  $SudokuMatrixCopyWith<$Res> get matrix;
 }
 
 /// @nodoc
@@ -447,9 +467,14 @@ class __$$SudokuIndexImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? matrix = null,
     Object? index = null,
   }) {
     return _then(_$SudokuIndexImpl(
+      matrix: null == matrix
+          ? _value.matrix
+          : matrix // ignore: cast_nullable_to_non_nullable
+              as SudokuMatrix,
       index: null == index
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
@@ -461,7 +486,10 @@ class __$$SudokuIndexImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SudokuIndexImpl implements _SudokuIndex {
-  const _$SudokuIndexImpl({required this.index});
+  const _$SudokuIndexImpl({required this.matrix, required this.index});
+
+  @override
+  final SudokuMatrix matrix;
 
   /// 直接用索引定位
   @override
@@ -469,7 +497,7 @@ class _$SudokuIndexImpl implements _SudokuIndex {
 
   @override
   String toString() {
-    return 'SudokuIndex(index: $index)';
+    return 'SudokuIndex(matrix: $matrix, index: $index)';
   }
 
   @override
@@ -477,11 +505,12 @@ class _$SudokuIndexImpl implements _SudokuIndex {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SudokuIndexImpl &&
+            (identical(other.matrix, matrix) || other.matrix == matrix) &&
             (identical(other.index, index) || other.index == index));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, index);
+  int get hashCode => Object.hash(runtimeType, matrix, index);
 
   @JsonKey(ignore: true)
   @override
@@ -491,8 +520,12 @@ class _$SudokuIndexImpl implements _SudokuIndex {
 }
 
 abstract class _SudokuIndex implements SudokuIndex {
-  const factory _SudokuIndex({required final int index}) = _$SudokuIndexImpl;
+  const factory _SudokuIndex(
+      {required final SudokuMatrix matrix,
+      required final int index}) = _$SudokuIndexImpl;
 
+  @override
+  SudokuMatrix get matrix;
   @override
 
   /// 直接用索引定位
