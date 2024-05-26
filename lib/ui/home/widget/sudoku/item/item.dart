@@ -3,8 +3,9 @@ import 'package:flutter_sudoku/ui/home/provider/provider.dart' as provider;
 import 'package:flutter/material.dart';
 
 import 'indicate_editing.dart';
+import 'number_text.dart';
 
-class SudokuNumberItemWidget extends ConsumerWidget {
+class SudokuNumberItemWidget extends StatelessWidget {
   const SudokuNumberItemWidget({
     super.key,
     required this.index,
@@ -13,8 +14,7 @@ class SudokuNumberItemWidget extends ConsumerWidget {
   final provider.SudokuIndex index;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final number = provider.watchSudokuNumber(ref, index);
+  Widget build(BuildContext context) {
     return IndicateSudokuNumberEditingWidget(
       index: index,
       child: _EditNumber(
@@ -22,15 +22,21 @@ class SudokuNumberItemWidget extends ConsumerWidget {
         child: FittedBox(
           child: Padding(
             padding: const EdgeInsets.all(2.0),
-            child: AnimatedSwitcher(
-              duration: Durations.short4,
-              child: KeyedSubtree(
-                key: ValueKey(number?.number),
-                child: Text(
-                  number?.number.toString() ?? '',
-                  style: Theme.of(context).textTheme.titleMedium,
-                ),
-              ),
+            child: Consumer(
+              builder: (context, ref, _) {
+                final number = provider.watchSudokuNumber(ref, index);
+                final color = provider.watchSudokuNumberColor(ref, index);
+                return AnimatedSwitcher(
+                  duration: Durations.short4,
+                  child: KeyedSubtree(
+                    key: ValueKey(number?.number),
+                    child: SudokuNumberTextWidget(
+                      number: number,
+                      colorState: color,
+                    ),
+                  ),
+                );
+              },
             ),
           ),
         ),
@@ -53,9 +59,11 @@ class _EditNumber extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final canEdit = provider.watchSudokuIndexCanEdit(ref, index);
     return InkWell(
-      onTap: canEdit ? () {
-        provider.actionSelectSudokuIndex(ref, index);
-      }: null,
+      onTap: canEdit
+          ? () {
+              provider.actionSelectSudokuIndex(ref, index);
+            }
+          : null,
       child: child,
     );
   }
