@@ -17,7 +17,7 @@ extension SudokuEditing on SudokuGameState {
   SudokuGameState clearAll() {
     return copyWith(
       solution: solution.copyWith(
-        numbers: const [],
+        numbers: List.filled(matrix.count, null),
       ),
     );
   }
