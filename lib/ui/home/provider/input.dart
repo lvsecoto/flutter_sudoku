@@ -6,16 +6,29 @@ class CurrentInputSudokuIndex extends _$CurrentInputSudokuIndex
     with SelectableNotifier {
   @override
   SudokuIndex? build() {
+    final appPersistence = ref.read(appPersistenceProvider);
     ref.listen(currentSudokuGameStateProvider, (prev, next) {
       if (prev?.id != next.id) {
-        // 每当有新游戏，自动找到第一个空白项，作为初次输入的数独索引
-        final firstEmptyIndex =
-            next.puzzle.masked.numbers.indexWhere((it) => it == null);
-        state = SudokuIndex(matrix: next.matrix, index: firstEmptyIndex);
+        if (prev?.id == SudokuGameState.emptyId) {
+          appPersistence.getCurrentInputIndex().then((index) {
+            state = index;
+          });
+        } else {
+          // 每当有新游戏，自动找到第一个空白项，作为初次输入的数独索引
+          final firstEmptyIndex =
+          next.puzzle.masked.numbers.indexWhere((it) => it == null);
+          state = SudokuIndex(matrix: next.matrix, index: firstEmptyIndex);
+        }
       }
     });
 
     return null;
+  }
+
+  @override
+  set state(SudokuIndex? value) {
+    super.state = value;
+    ref.read(appPersistenceProvider).setCurrentInputIndex(state);
   }
 }
 

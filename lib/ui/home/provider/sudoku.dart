@@ -6,8 +6,21 @@ class CurrentSudokuGameState extends _$CurrentSudokuGameState
     with UpdateWithNotifier, SelectableNotifier {
   @override
   SudokuGameState build() {
-    return ref.watch(sudokuManagerProvider).createGame();
+    return SudokuGameState.empty();
   }
+
+  @override
+  void updateWith(SudokuGameState Function(SudokuGameState value) block) {
+    super.updateWith(block);
+    ref.read(appPersistenceProvider).setGameState(state);
+  }
+}
+
+/// 数独是否加载完毕
+bool watchSudokuIsEmpty(WidgetRef ref) {
+  return ref.watch(_selectGameState(
+    (state) => state == SudokuGameState.empty(),
+  ));
 }
 
 /// 重新开始游戏
@@ -19,7 +32,7 @@ void actionRecreateGame(WidgetRef ref, SudokuLevel level) {
       .updateWith((state) => newSudoku);
 }
 
-/// 重新开始游戏
+/// 重设游戏状态
 void actionResetGame(WidgetRef ref) {
   ref.read(currentSudokuGameStateProvider.notifier).updateWith((state) {
     return state.clearAll();

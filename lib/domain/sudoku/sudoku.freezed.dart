@@ -14,10 +14,15 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
+SudokuNumber _$SudokuNumberFromJson(Map<String, dynamic> json) {
+  return _SudokuNumber.fromJson(json);
+}
+
 /// @nodoc
 mixin _$SudokuNumber {
   int get number => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $SudokuNumberCopyWith<SudokuNumber> get copyWith =>
       throw _privateConstructorUsedError;
@@ -90,9 +95,12 @@ class __$$SudokuNumberImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$SudokuNumberImpl implements _SudokuNumber {
   const _$SudokuNumberImpl(this.number);
+
+  factory _$SudokuNumberImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SudokuNumberImplFromJson(json);
 
   @override
   final int number;
@@ -110,6 +118,7 @@ class _$SudokuNumberImpl implements _SudokuNumber {
             (identical(other.number, number) || other.number == number));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, number);
 
@@ -118,10 +127,20 @@ class _$SudokuNumberImpl implements _SudokuNumber {
   @pragma('vm:prefer-inline')
   _$$SudokuNumberImplCopyWith<_$SudokuNumberImpl> get copyWith =>
       __$$SudokuNumberImplCopyWithImpl<_$SudokuNumberImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SudokuNumberImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _SudokuNumber implements SudokuNumber {
   const factory _SudokuNumber(final int number) = _$SudokuNumberImpl;
+
+  factory _SudokuNumber.fromJson(Map<String, dynamic> json) =
+      _$SudokuNumberImpl.fromJson;
 
   @override
   int get number;
@@ -131,10 +150,15 @@ abstract class _SudokuNumber implements SudokuNumber {
       throw _privateConstructorUsedError;
 }
 
+CompletedSudoku _$CompletedSudokuFromJson(Map<String, dynamic> json) {
+  return _CompletedSudoku.fromJson(json);
+}
+
 /// @nodoc
 mixin _$CompletedSudoku {
   List<SudokuNumber> get numbers => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $CompletedSudokuCopyWith<CompletedSudoku> get copyWith =>
       throw _privateConstructorUsedError;
@@ -207,10 +231,13 @@ class __$$CompletedSudokuImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$CompletedSudokuImpl implements _CompletedSudoku {
   const _$CompletedSudokuImpl({required final List<SudokuNumber> numbers})
       : _numbers = numbers;
+
+  factory _$CompletedSudokuImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CompletedSudokuImplFromJson(json);
 
   final List<SudokuNumber> _numbers;
   @override
@@ -233,6 +260,7 @@ class _$CompletedSudokuImpl implements _CompletedSudoku {
             const DeepCollectionEquality().equals(other._numbers, _numbers));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_numbers));
@@ -243,11 +271,21 @@ class _$CompletedSudokuImpl implements _CompletedSudoku {
   _$$CompletedSudokuImplCopyWith<_$CompletedSudokuImpl> get copyWith =>
       __$$CompletedSudokuImplCopyWithImpl<_$CompletedSudokuImpl>(
           this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$CompletedSudokuImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _CompletedSudoku implements CompletedSudoku {
   const factory _CompletedSudoku({required final List<SudokuNumber> numbers}) =
       _$CompletedSudokuImpl;
+
+  factory _CompletedSudoku.fromJson(Map<String, dynamic> json) =
+      _$CompletedSudokuImpl.fromJson;
 
   @override
   List<SudokuNumber> get numbers;
@@ -257,10 +295,15 @@ abstract class _CompletedSudoku implements CompletedSudoku {
       throw _privateConstructorUsedError;
 }
 
+PartSudoku _$PartSudokuFromJson(Map<String, dynamic> json) {
+  return _PartSudoku.fromJson(json);
+}
+
 /// @nodoc
 mixin _$PartSudoku {
   List<SudokuNumber?> get numbers => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $PartSudokuCopyWith<PartSudoku> get copyWith =>
       throw _privateConstructorUsedError;
@@ -333,10 +376,13 @@ class __$$PartSudokuImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$PartSudokuImpl implements _PartSudoku {
   const _$PartSudokuImpl({required final List<SudokuNumber?> numbers})
       : _numbers = numbers;
+
+  factory _$PartSudokuImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PartSudokuImplFromJson(json);
 
   final List<SudokuNumber?> _numbers;
   @override
@@ -359,6 +405,7 @@ class _$PartSudokuImpl implements _PartSudoku {
             const DeepCollectionEquality().equals(other._numbers, _numbers));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_numbers));
@@ -368,11 +415,21 @@ class _$PartSudokuImpl implements _PartSudoku {
   @pragma('vm:prefer-inline')
   _$$PartSudokuImplCopyWith<_$PartSudokuImpl> get copyWith =>
       __$$PartSudokuImplCopyWithImpl<_$PartSudokuImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$PartSudokuImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _PartSudoku implements PartSudoku {
   const factory _PartSudoku({required final List<SudokuNumber?> numbers}) =
       _$PartSudokuImpl;
+
+  factory _PartSudoku.fromJson(Map<String, dynamic> json) =
+      _$PartSudokuImpl.fromJson;
 
   @override
   List<SudokuNumber?> get numbers;
@@ -382,6 +439,10 @@ abstract class _PartSudoku implements PartSudoku {
       throw _privateConstructorUsedError;
 }
 
+SudokuIndex _$SudokuIndexFromJson(Map<String, dynamic> json) {
+  return _SudokuIndex.fromJson(json);
+}
+
 /// @nodoc
 mixin _$SudokuIndex {
   SudokuMatrix get matrix => throw _privateConstructorUsedError;
@@ -389,6 +450,7 @@ mixin _$SudokuIndex {
   /// 直接用索引定位
   int get index => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $SudokuIndexCopyWith<SudokuIndex> get copyWith =>
       throw _privateConstructorUsedError;
@@ -484,9 +546,12 @@ class __$$SudokuIndexImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$SudokuIndexImpl implements _SudokuIndex {
   const _$SudokuIndexImpl({required this.matrix, required this.index});
+
+  factory _$SudokuIndexImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SudokuIndexImplFromJson(json);
 
   @override
   final SudokuMatrix matrix;
@@ -509,6 +574,7 @@ class _$SudokuIndexImpl implements _SudokuIndex {
             (identical(other.index, index) || other.index == index));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, matrix, index);
 
@@ -517,12 +583,22 @@ class _$SudokuIndexImpl implements _SudokuIndex {
   @pragma('vm:prefer-inline')
   _$$SudokuIndexImplCopyWith<_$SudokuIndexImpl> get copyWith =>
       __$$SudokuIndexImplCopyWithImpl<_$SudokuIndexImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SudokuIndexImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _SudokuIndex implements SudokuIndex {
   const factory _SudokuIndex(
       {required final SudokuMatrix matrix,
       required final int index}) = _$SudokuIndexImpl;
+
+  factory _SudokuIndex.fromJson(Map<String, dynamic> json) =
+      _$SudokuIndexImpl.fromJson;
 
   @override
   SudokuMatrix get matrix;
@@ -536,12 +612,17 @@ abstract class _SudokuIndex implements SudokuIndex {
       throw _privateConstructorUsedError;
 }
 
+SudokuMatrix _$SudokuMatrixFromJson(Map<String, dynamic> json) {
+  return _SudokuMatrix.fromJson(json);
+}
+
 /// @nodoc
 mixin _$SudokuMatrix {
   /// 难度
   SudokuLevel get level => throw _privateConstructorUsedError;
   int get dimension => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $SudokuMatrixCopyWith<SudokuMatrix> get copyWith =>
       throw _privateConstructorUsedError;
@@ -624,10 +705,13 @@ class __$$SudokuMatrixImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$SudokuMatrixImpl extends _SudokuMatrix {
   const _$SudokuMatrixImpl({this.level = SudokuLevel.easy, this.dimension = 9})
       : super._();
+
+  factory _$SudokuMatrixImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SudokuMatrixImplFromJson(json);
 
   /// 难度
   @override
@@ -652,6 +736,7 @@ class _$SudokuMatrixImpl extends _SudokuMatrix {
                 other.dimension == dimension));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, level, dimension);
 
@@ -660,12 +745,22 @@ class _$SudokuMatrixImpl extends _SudokuMatrix {
   @pragma('vm:prefer-inline')
   _$$SudokuMatrixImplCopyWith<_$SudokuMatrixImpl> get copyWith =>
       __$$SudokuMatrixImplCopyWithImpl<_$SudokuMatrixImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SudokuMatrixImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _SudokuMatrix extends SudokuMatrix {
   const factory _SudokuMatrix({final SudokuLevel level, final int dimension}) =
       _$SudokuMatrixImpl;
   const _SudokuMatrix._() : super._();
+
+  factory _SudokuMatrix.fromJson(Map<String, dynamic> json) =
+      _$SudokuMatrixImpl.fromJson;
 
   @override
 
@@ -679,6 +774,10 @@ abstract class _SudokuMatrix extends SudokuMatrix {
       throw _privateConstructorUsedError;
 }
 
+SudokuGamePuzzle _$SudokuGamePuzzleFromJson(Map<String, dynamic> json) {
+  return _SudokuGamePuzzle.fromJson(json);
+}
+
 /// @nodoc
 mixin _$SudokuGamePuzzle {
   /// 挖空了的数独
@@ -687,6 +786,7 @@ mixin _$SudokuGamePuzzle {
   /// 完整的数独
   CompletedSudoku get plain => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $SudokuGamePuzzleCopyWith<SudokuGamePuzzle> get copyWith =>
       throw _privateConstructorUsedError;
@@ -793,9 +893,12 @@ class __$$SudokuGamePuzzleImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$SudokuGamePuzzleImpl implements _SudokuGamePuzzle {
   const _$SudokuGamePuzzleImpl({required this.masked, required this.plain});
+
+  factory _$SudokuGamePuzzleImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SudokuGamePuzzleImplFromJson(json);
 
   /// 挖空了的数独
   @override
@@ -819,6 +922,7 @@ class _$SudokuGamePuzzleImpl implements _SudokuGamePuzzle {
             (identical(other.plain, plain) || other.plain == plain));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, masked, plain);
 
@@ -828,12 +932,22 @@ class _$SudokuGamePuzzleImpl implements _SudokuGamePuzzle {
   _$$SudokuGamePuzzleImplCopyWith<_$SudokuGamePuzzleImpl> get copyWith =>
       __$$SudokuGamePuzzleImplCopyWithImpl<_$SudokuGamePuzzleImpl>(
           this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SudokuGamePuzzleImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _SudokuGamePuzzle implements SudokuGamePuzzle {
   const factory _SudokuGamePuzzle(
       {required final PartSudoku masked,
       required final CompletedSudoku plain}) = _$SudokuGamePuzzleImpl;
+
+  factory _SudokuGamePuzzle.fromJson(Map<String, dynamic> json) =
+      _$SudokuGamePuzzleImpl.fromJson;
 
   @override
 
@@ -847,6 +961,10 @@ abstract class _SudokuGamePuzzle implements SudokuGamePuzzle {
   @JsonKey(ignore: true)
   _$$SudokuGamePuzzleImplCopyWith<_$SudokuGamePuzzleImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+SudokuGameState _$SudokuGameStateFromJson(Map<String, dynamic> json) {
+  return _SudokuGameState.fromJson(json);
 }
 
 /// @nodoc
@@ -863,6 +981,7 @@ mixin _$SudokuGameState {
   /// 用户数独解决状态
   PartSudoku get solution => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $SudokuGameStateCopyWith<SudokuGameState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1008,13 +1127,16 @@ class __$$SudokuGameStateImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$SudokuGameStateImpl implements _SudokuGameState {
   const _$SudokuGameStateImpl(
       {required this.id,
       required this.matrix,
       required this.puzzle,
       required this.solution});
+
+  factory _$SudokuGameStateImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SudokuGameStateImplFromJson(json);
 
   /// 游戏的id
   @override
@@ -1049,6 +1171,7 @@ class _$SudokuGameStateImpl implements _SudokuGameState {
                 other.solution == solution));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, matrix, puzzle, solution);
 
@@ -1058,6 +1181,13 @@ class _$SudokuGameStateImpl implements _SudokuGameState {
   _$$SudokuGameStateImplCopyWith<_$SudokuGameStateImpl> get copyWith =>
       __$$SudokuGameStateImplCopyWithImpl<_$SudokuGameStateImpl>(
           this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SudokuGameStateImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _SudokuGameState implements SudokuGameState {
@@ -1066,6 +1196,9 @@ abstract class _SudokuGameState implements SudokuGameState {
       required final SudokuMatrix matrix,
       required final SudokuGamePuzzle puzzle,
       required final PartSudoku solution}) = _$SudokuGameStateImpl;
+
+  factory _SudokuGameState.fromJson(Map<String, dynamic> json) =
+      _$SudokuGameStateImpl.fromJson;
 
   @override
 
@@ -1089,6 +1222,10 @@ abstract class _SudokuGameState implements SudokuGameState {
       throw _privateConstructorUsedError;
 }
 
+SudokuValidation _$SudokuValidationFromJson(Map<String, dynamic> json) {
+  return _SudokuValidation.fromJson(json);
+}
+
 /// @nodoc
 mixin _$SudokuValidation {
   /// 不合法的索引
@@ -1097,6 +1234,7 @@ mixin _$SudokuValidation {
   /// 已经完成的索引
   List<SudokuIndex> get completed => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $SudokuValidationCopyWith<SudokuValidation> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1179,13 +1317,16 @@ class __$$SudokuValidationImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$SudokuValidationImpl implements _SudokuValidation {
   const _$SudokuValidationImpl(
       {required final List<SudokuIndex> invalid,
       required final List<SudokuIndex> completed})
       : _invalid = invalid,
         _completed = completed;
+
+  factory _$SudokuValidationImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SudokuValidationImplFromJson(json);
 
   /// 不合法的索引
   final List<SudokuIndex> _invalid;
@@ -1224,6 +1365,7 @@ class _$SudokuValidationImpl implements _SudokuValidation {
                 .equals(other._completed, _completed));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -1236,12 +1378,22 @@ class _$SudokuValidationImpl implements _SudokuValidation {
   _$$SudokuValidationImplCopyWith<_$SudokuValidationImpl> get copyWith =>
       __$$SudokuValidationImplCopyWithImpl<_$SudokuValidationImpl>(
           this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SudokuValidationImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _SudokuValidation implements SudokuValidation {
   const factory _SudokuValidation(
       {required final List<SudokuIndex> invalid,
       required final List<SudokuIndex> completed}) = _$SudokuValidationImpl;
+
+  factory _SudokuValidation.fromJson(Map<String, dynamic> json) =
+      _$SudokuValidationImpl.fromJson;
 
   @override
 

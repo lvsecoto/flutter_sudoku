@@ -1,7 +1,9 @@
 import 'dart:ui';
 
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_sudoku/common/common.dart';
+import 'package:flutter_sudoku/data/data.dart';
 import 'package:flutter_sudoku/domain/domain.dart';
 import 'package:flutter_sudoku/domain/sudoku/sudoku.dart';
 import 'package:flutter_sudoku/domain/sudoku/use_case/use_case.dart';
@@ -33,5 +35,17 @@ extension LevelEx on SudokuLevel {
       SudokuLevel.hard => '困难',
       SudokuLevel.expert => '地狱',
     };
+  }
+}
+
+/// 首次进入游戏时初始化
+Future<void> onHomeBegin(WidgetRef ref) async {
+  final gameState = await ref.read(appPersistenceProvider).getGameState();
+  if (gameState != null) {
+    ref.read(currentSudokuGameStateProvider.notifier).select(gameState);
+  } else {
+    ref.read(currentSudokuGameStateProvider.notifier).select(
+      ref.read(sudokuManagerProvider).createGame(),
+    );
   }
 }

@@ -15,6 +15,9 @@ class SudokuNumber with _$SudokuNumber {
   const factory SudokuNumber(
     int number,
   ) = _SudokuNumber;
+
+  factory SudokuNumber.fromJson(Map<String, dynamic> json) =>
+      _$SudokuNumberFromJson(json);
 }
 
 /// 数独抽象
@@ -43,6 +46,9 @@ class CompletedSudoku with _$CompletedSudoku implements Sudoku<SudokuNumber> {
   const factory CompletedSudoku({
     required List<SudokuNumber> numbers,
   }) = _CompletedSudoku;
+
+  factory CompletedSudoku.fromJson(Map<String, dynamic> json) =>
+      _$CompletedSudokuFromJson(json);
 }
 
 @freezed
@@ -51,6 +57,9 @@ class PartSudoku with _$PartSudoku implements Sudoku<SudokuNumber?> {
   const factory PartSudoku({
     required List<SudokuNumber?> numbers,
   }) = _PartSudoku;
+
+  factory PartSudoku.fromJson(Map<String, dynamic> json) =>
+      _$PartSudokuFromJson(json);
 }
 
 @freezed
@@ -62,6 +71,9 @@ class SudokuIndex with _$SudokuIndex {
     /// 直接用索引定位
     required int index,
   }) = _SudokuIndex;
+
+  factory SudokuIndex.fromJson(Map<String, dynamic> json) =>
+      _$SudokuIndexFromJson(json);
 }
 
 @freezed
@@ -74,6 +86,9 @@ class SudokuMatrix with _$SudokuMatrix {
     @Default(SudokuLevel.easy) SudokuLevel level,
     @Default(9) int dimension,
   }) = _SudokuMatrix;
+
+  factory SudokuMatrix.fromJson(Map<String, dynamic> json) =>
+      _$SudokuMatrixFromJson(json);
 
   /// 行
   int get column => dimension;
@@ -95,10 +110,15 @@ class SudokuGamePuzzle with _$SudokuGamePuzzle {
     /// 完整的数独
     required CompletedSudoku plain,
   }) = _SudokuGamePuzzle;
+
+  factory SudokuGamePuzzle.fromJson(Map<String, dynamic> json) =>
+      _$SudokuGamePuzzleFromJson(json);
 }
 
 @freezed
 class SudokuGameState with _$SudokuGameState {
+  static const int emptyId = -1;
+
   /// 数独的游戏状态
   const factory SudokuGameState({
     /// 游戏的id
@@ -113,6 +133,25 @@ class SudokuGameState with _$SudokuGameState {
     /// 用户数独解决状态
     required PartSudoku solution,
   }) = _SudokuGameState;
+
+  static SudokuGameState empty() {
+    return const SudokuGameState(
+      id: emptyId,
+      solution: PartSudoku(numbers: []),
+      matrix: SudokuMatrix(),
+      puzzle: SudokuGamePuzzle(
+        plain: CompletedSudoku(
+          numbers: [],
+        ),
+        masked: PartSudoku(
+          numbers: [],
+        ),
+      ),
+    );
+  }
+
+  factory SudokuGameState.fromJson(Map<String, dynamic> json) =>
+      _$SudokuGameStateFromJson(json);
 }
 
 @freezed
@@ -125,4 +164,7 @@ class SudokuValidation with _$SudokuValidation {
     /// 已经完成的索引
     required List<SudokuIndex> completed,
   }) = _SudokuValidation;
+
+  factory SudokuValidation.fromJson(Map<String, dynamic> json) =>
+      _$SudokuValidationFromJson(json);
 }

@@ -501,6 +501,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "4.9.0"
+  json_serializable:
+    dependency: "direct dev"
+    description:
+      name: json_serializable
+      sha256: ea1432d167339ea9b5bb153f0571d0039607a873d6e04e0117af043f14a1fd4b
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "6.8.0"
   leak_tracker:
     dependency: transitive
     description:
@@ -637,6 +645,24 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.2.1"
+  persistence:
+    dependency: "direct dev"
+    description:
+      path: "."
+      ref: ddd186b
+      resolved-ref: ddd186b8f780c38a9485f886aa9d81c4e016cd9f
+      url: "https://github.com/lvsecoto/flutter_persistence.git"
+    source: git
+    version: "0.0.0"
+  persistence_annotation:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: "7732f6cfd0a1dcce9e228f30d941bb2a6c3fbe8b"
+      resolved-ref: "7732f6cfd0a1dcce9e228f30d941bb2a6c3fbe8b"
+      url: "https://github.com/lvsecoto/flutter_persistence_annotation.git"
+    source: git
+    version: "0.0.0"
   platform:
     dependency: transitive
     description:
@@ -685,6 +711,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.2.3"
+  recase:
+    dependency: transitive
+    description:
+      name: recase
+      sha256: e4eb4ec2dcdee52dcf99cb4ceabaffc631d7424ee55e56f280bc039737f89213
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "4.1.0"
   retrofit:
     dependency: "direct main"
     description:

@@ -365,7 +365,7 @@ class _SudokuBackgroundColorProviderElement
 }
 
 String _$currentSudokuGameStateHash() =>
-    r'b82d49804f2f19bb611652fb474e33510ce92f5f';
+    r'1e7289de6ecd73ae6b4d41f1029e2a3b36b21c2e';
 
 /// 数独当前游戏状态
 ///
@@ -384,7 +384,7 @@ final currentSudokuGameStateProvider = AutoDisposeNotifierProvider<
 
 typedef _$CurrentSudokuGameState = AutoDisposeNotifier<SudokuGameState>;
 String _$currentInputSudokuIndexHash() =>
-    r'fe9596bcb3950c5778b9482eaad37079dc26ca44';
+    r'45b7c7363f37989fa2b7e5336399e6d2ef9f6d81';
 
 /// 当前正在输入的数独索引
 ///

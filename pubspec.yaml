@@ -56,6 +56,11 @@ dependencies:
   riverpod: ^2.5.1
   gap: ^3.0.1
 
+  persistence_annotation:
+    git:
+      url: https://github.com/lvsecoto/flutter_persistence_annotation.git
+      ref: 7732f6cfd0a1dcce9e228f30d941bb2a6c3fbe8b
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -73,6 +78,12 @@ dev_dependencies:
   retrofit_generator: ^8.1.0
   custom_lint: ^0.6.4
   build_runner: ^2.4.10
+  json_serializable: ^6.7.1
+
+  persistence:
+    git:
+      url: https://github.com/lvsecoto/flutter_persistence.git
+      ref: ddd186b
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
