@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_import, unused_element
+
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_sudoku/ui/home/provider/provider.dart' as provider;
 import 'package:flutter/material.dart';

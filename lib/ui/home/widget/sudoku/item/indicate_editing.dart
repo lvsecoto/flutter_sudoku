@@ -1,6 +1,5 @@
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_sudoku/common/common.dart';
 import 'package:flutter_sudoku/ui/common/animated_visibility_widget.dart';
 import 'package:flutter_sudoku/ui/home/provider/provider.dart' as provider;

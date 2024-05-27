@@ -17,6 +17,8 @@ SudokuManager sudokuManager(SudokuManagerRef ref) {
 }
 
 class SudokuManager {
+
+  // ignore: unused_field
   final AutoDisposeRef<SudokuManager> _ref;
 
   /// 数独管理器

@@ -1,6 +1,3 @@
-import 'dart:ui';
-
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_sudoku/common/common.dart';
 import 'package:flutter_sudoku/data/data.dart';
