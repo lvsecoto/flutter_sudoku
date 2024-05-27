@@ -11,7 +11,9 @@ class CurrentInputSudokuIndex extends _$CurrentInputSudokuIndex
       if (prev?.id != next.id) {
         if (prev?.id == SudokuGameState.emptyId) {
           appPersistence.getCurrentInputIndex().then((index) {
-            state = index;
+            if (index != null) {
+              state = index;
+            }
           });
         } else {
           // 每当有新游戏，自动找到第一个空白项，作为初次输入的数独索引

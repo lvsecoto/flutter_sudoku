@@ -31,7 +31,9 @@ class ContentWidget extends StatelessWidget {
               Expanded(
                 child: SudokuPlayingWidget(),
               ),
-              SudokuInputWidget(),
+              _FitCenter(
+                child: SudokuInputWidget(),
+              ),
             ],
           ),
         ),
@@ -52,8 +54,30 @@ class _LoadSudokuState extends ConsumerWidget {
     final isEmpty = provider.watchSudokuIsEmpty(ref);
     return AnimatedVisibilityWidget(
       isVisible: !isEmpty,
-      animationWidgetBuilder: AnimatedVisibilityWidget.fadeAnimationWidgetBuilder,
+      animationWidgetBuilder:
+          AnimatedVisibilityWidget.fadeAnimationWidgetBuilder,
       child: child,
+    );
+  }
+}
+
+class _FitCenter extends StatelessWidget {
+  const _FitCenter({
+    required this.child,
+  });
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 600),
+          child: child,
+        ),
+      ],
     );
   }
 }

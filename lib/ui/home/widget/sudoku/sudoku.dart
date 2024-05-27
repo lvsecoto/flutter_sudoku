@@ -1,3 +1,4 @@
+import 'package:dartx/dartx.dart';
 import 'package:flutter_sudoku/ui/home/provider/provider.dart' as provider;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -61,8 +62,14 @@ class _FillCenter extends StatelessWidget {
         );
       } else {
         return Row(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [child],
+          children: [
+            SizedBox(
+              width: constraint.maxHeight,
+              child: child,
+            ),
+          ],
         );
       }
     });
