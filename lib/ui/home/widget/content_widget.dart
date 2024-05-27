@@ -1,3 +1,4 @@
+import 'package:dartx/dartx.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_sudoku/ui/common/common.dart';
 import 'package:flutter_sudoku/ui/home/provider/provider.dart' as provider;
@@ -27,6 +28,7 @@ class ContentWidget extends StatelessWidget {
         child: SafeArea(
           bottom: true,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Expanded(
                 child: SudokuPlayingWidget(),
@@ -70,14 +72,19 @@ class _FitCenter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 600),
-          child: child,
-        ),
-      ],
+    return LayoutBuilder(
+      builder: (context, constraint) {
+        final width = constraint.maxWidth.coerceAtMost(600);
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              width: width,
+              child: child,
+            ),
+          ],
+        );
+      }
     );
   }
 }
