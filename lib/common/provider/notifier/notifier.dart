@@ -7,13 +7,11 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:riverpod/riverpod.dart';
 
 // ignore: implementation_imports
 import 'package:riverpod/src/framework.dart';
 
-// ignore: implementation_imports
-import 'package:riverpod/src/notifier.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 /// 给Notifier添加选择功能
 mixin SelectableNotifier<T> on BuildlessAutoDisposeNotifier<T> {
@@ -26,7 +24,23 @@ mixin SelectableNotifier<T> on BuildlessAutoDisposeNotifier<T> {
 
   /// 清除值
   void clear() {
-    state = null as dynamic;
+    select(null as dynamic);
+  }
+}
+
+/// 给异步Notifier添加选择功能
+mixin AsyncSelectableNotifier<T> on BuildlessAutoDisposeAsyncNotifier<T> {
+  /// 选择值
+  Future<void> select(T value) async {
+    await future;
+    if (state.requireValue != value) {
+      state = AsyncData(value);
+    }
+  }
+
+  /// 清除值
+  Future<void> clear() async {
+    select(null as dynamic);
   }
 }
 

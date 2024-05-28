@@ -6,6 +6,7 @@ import 'item/item.dart';
 import 'background.dart';
 
 export 'input/input.dart';
+export 'tools/tools.dart';
 
 class SudokuPlayingWidget extends ConsumerWidget {
   /// 数独游戏进行显示组件，大小是正方形

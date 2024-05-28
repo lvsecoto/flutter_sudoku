@@ -3,6 +3,27 @@
 part of 'provider.dart';
 
 // **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+_$SudokuGameHistoryImpl _$$SudokuGameHistoryImplFromJson(
+        Map<String, dynamic> json) =>
+    _$SudokuGameHistoryImpl(
+      gameState:
+          SudokuGameState.fromJson(json['gameState'] as Map<String, dynamic>),
+      inputIndex: json['inputIndex'] == null
+          ? null
+          : SudokuIndex.fromJson(json['inputIndex'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$$SudokuGameHistoryImplToJson(
+        _$SudokuGameHistoryImpl instance) =>
+    <String, dynamic>{
+      'gameState': instance.gameState,
+      'inputIndex': instance.inputIndex,
+    };
+
+// **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
@@ -364,8 +385,24 @@ class _SudokuBackgroundColorProviderElement
   SudokuIndex get index => (origin as SudokuBackgroundColorProvider).index;
 }
 
+String _$isHomeInitializedHash() => r'51247083c77fb445b90aa2fc889e8590b06645dd';
+
+/// See also [_IsHomeInitialized].
+@ProviderFor(_IsHomeInitialized)
+final _isHomeInitializedProvider =
+    AutoDisposeNotifierProvider<_IsHomeInitialized, bool>.internal(
+  _IsHomeInitialized.new,
+  name: r'_isHomeInitializedProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$isHomeInitializedHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$IsHomeInitialized = AutoDisposeNotifier<bool>;
 String _$currentSudokuGameStateHash() =>
-    r'1e7289de6ecd73ae6b4d41f1029e2a3b36b21c2e';
+    r'4b4505a7d5da44a722ad5b657ac3a1d557e555a3';
 
 /// 数独当前游戏状态
 ///
@@ -384,7 +421,7 @@ final currentSudokuGameStateProvider = AutoDisposeNotifierProvider<
 
 typedef _$CurrentSudokuGameState = AutoDisposeNotifier<SudokuGameState>;
 String _$currentInputSudokuIndexHash() =>
-    r'45b7c7363f37989fa2b7e5336399e6d2ef9f6d81';
+    r'2a59bcfeb42959c83873069d4bc531ba523c8606';
 
 /// 当前正在输入的数独索引
 ///
@@ -402,5 +439,23 @@ final currentInputSudokuIndexProvider =
 );
 
 typedef _$CurrentInputSudokuIndex = AutoDisposeNotifier<SudokuIndex?>;
+String _$currentSudokuGameHistoryStackHash() =>
+    r'65fb114decfc422dd8af75a988f991d462d3f9f7';
+
+/// See also [CurrentSudokuGameHistoryStack].
+@ProviderFor(CurrentSudokuGameHistoryStack)
+final currentSudokuGameHistoryStackProvider = AutoDisposeNotifierProvider<
+    CurrentSudokuGameHistoryStack, SudokuGameHistoryStack>.internal(
+  CurrentSudokuGameHistoryStack.new,
+  name: r'currentSudokuGameHistoryStackProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$currentSudokuGameHistoryStackHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$CurrentSudokuGameHistoryStack
+    = AutoDisposeNotifier<SudokuGameHistoryStack>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

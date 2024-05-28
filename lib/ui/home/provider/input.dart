@@ -6,6 +6,7 @@ class CurrentInputSudokuIndex extends _$CurrentInputSudokuIndex
     with SelectableNotifier {
   @override
   SudokuIndex? build() {
+    ref.keepAlive();
     final appPersistence = ref.read(appPersistenceProvider);
     ref.listen(currentSudokuGameStateProvider, (prev, next) {
       if (prev?.id != next.id) {
@@ -30,7 +31,7 @@ class CurrentInputSudokuIndex extends _$CurrentInputSudokuIndex
   @override
   set state(SudokuIndex? value) {
     super.state = value;
-    ref.read(appPersistenceProvider).setCurrentInputIndex(state);
+    _saveGameInputIndex(ref, state);
   }
 }
 
@@ -76,6 +77,8 @@ int watchSelectedSudokuNumbersIndex(WidgetRef ref) {
 }
 
 /// 操作：填充[number]到当前正在输入的索引上
+///
+/// *会记录到历史中*
 void actionFillInputSudokuNumber(WidgetRef ref, SudokuNumber number) {
   final currentIndex = ref.read(currentInputSudokuIndexProvider);
   if (currentIndex != null) {
@@ -85,5 +88,6 @@ void actionFillInputSudokuNumber(WidgetRef ref, SudokuNumber number) {
         return state.fill(currentIndex, number);
       },
     );
+    _recordGameHistory(ref);
   }
 }

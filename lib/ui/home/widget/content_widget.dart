@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_sudoku/ui/common/common.dart';
 import 'package:flutter_sudoku/ui/home/provider/provider.dart' as provider;
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+
 import 'sudoku/sudoku.dart';
 import 'actions/actions.dart';
 
@@ -13,7 +14,7 @@ class ContentWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: _LoadSudokuState(
+        title: _LoadGameState(
           child: Consumer(
             builder: (context, ref, _) =>
                 Text(ref.watch(provider.homeTitleProvider)),
@@ -24,7 +25,7 @@ class ContentWidget extends StatelessWidget {
           CreateGameActionWidget(),
         ],
       ),
-      body: const _LoadSudokuState(
+      body: const _LoadGameState(
         child: SafeArea(
           bottom: true,
           child: Column(
@@ -34,7 +35,12 @@ class ContentWidget extends StatelessWidget {
                 child: SudokuPlayingWidget(),
               ),
               _FitCenter(
-                child: SudokuInputWidget(),
+                child: Column(
+                  children: [
+                    SudokuToolsWidget(),
+                    SudokuInputWidget(),
+                  ],
+                ),
               ),
             ],
           ),
@@ -44,8 +50,9 @@ class ContentWidget extends StatelessWidget {
   }
 }
 
-class _LoadSudokuState extends ConsumerWidget {
-  const _LoadSudokuState({
+class _LoadGameState extends ConsumerWidget {
+  /// 在加载完毕后，才显示界面
+  const _LoadGameState({
     required this.child,
   });
 
@@ -53,12 +60,12 @@ class _LoadSudokuState extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isEmpty = provider.watchSudokuIsEmpty(ref);
+    final isInitialized = provider.watchIsInitialized(ref);
     return AnimatedVisibilityWidget(
-      isVisible: !isEmpty,
+      isVisible: isInitialized,
       animationWidgetBuilder:
           AnimatedVisibilityWidget.fadeAnimationWidgetBuilder,
-      child: child,
+      child: isInitialized ? child : const SizedBox.shrink(),
     );
   }
 }
@@ -72,19 +79,17 @@ class _FitCenter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraint) {
-        final width = constraint.maxWidth.coerceAtMost(600);
-        return Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(
-              width: width,
-              child: child,
-            ),
-          ],
-        );
-      }
-    );
+    return LayoutBuilder(builder: (context, constraint) {
+      final width = constraint.maxWidth.coerceAtMost(600);
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(
+            width: width,
+            child: child,
+          ),
+        ],
+      );
+    });
   }
 }

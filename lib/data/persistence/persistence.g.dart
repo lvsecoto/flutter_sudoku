@@ -88,6 +88,68 @@ class _$AppPersistence {
       return AppPersistence.currentInputIndex;
     }
   }
+
+  /// 设置游戏历史[gameHistoryStack]
+  Future<void> setGameHistoryStack(
+      List<SudokuGameHistory> gameHistoryStack) async {
+    await (await box).put('game_history_stack', jsonEncode(gameHistoryStack));
+  }
+
+  /// 获取游戏历史[gameHistoryStack]
+  Future<List<SudokuGameHistory>> getGameHistoryStack() async {
+    return _decodeGameHistoryStack(
+            await (await box).get('game_history_stack', defaultValue: ''))
+        as List<SudokuGameHistory>;
+  }
+
+  /// 观察游戏历史[gameHistoryStack]
+  Stream<List<SudokuGameHistory>> observeGameHistoryStack() =>
+      (_gameHistoryStack ??= () async* {
+        yield (await getGameHistoryStack());
+        yield* (await box)
+            .watch(key: 'game_history_stack')
+            .map((event) => _decodeGameHistoryStack(event.value ?? ''));
+      }()
+              .shareReplay())
+          .asBroadcastStream();
+
+  Stream<List<SudokuGameHistory>>? _gameHistoryStack;
+
+  /// List<SudokuGameHistory>是List，需要序列化
+  List<SudokuGameHistory> _decodeGameHistoryStack(String val) {
+    try {
+      return (jsonDecode(val) as List<dynamic>?)
+              ?.map((it) => SudokuGameHistory.fromJson(it))
+              .toList() ??
+          AppPersistence.gameHistoryStack;
+    } catch (e) {
+      return AppPersistence.gameHistoryStack;
+    }
+  }
+
+  /// 设置游戏历史步骤[gameHistoryStackStep]
+  Future<void> setGameHistoryStackStep(int gameHistoryStackStep) async {
+    await (await box).put('game_history_stack_step', gameHistoryStackStep);
+  }
+
+  /// 获取游戏历史步骤[gameHistoryStackStep]
+  Future<int> getGameHistoryStackStep() async {
+    return await (await box).get('game_history_stack_step',
+        defaultValue: AppPersistence.gameHistoryStackStep);
+  }
+
+  /// 观察游戏历史步骤[gameHistoryStackStep]
+  Stream<int> observeGameHistoryStackStep() =>
+      (_gameHistoryStackStep ??= () async* {
+        yield (await getGameHistoryStackStep());
+        yield* (await box)
+            .watch(key: 'game_history_stack_step')
+            .map((event) => event.value as int);
+      }()
+              .shareReplay())
+          .asBroadcastStream();
+
+  Stream<int>? _gameHistoryStackStep;
 }
 
 // **************************************************************************

@@ -6,37 +6,38 @@ class CurrentSudokuGameState extends _$CurrentSudokuGameState
     with UpdateWithNotifier, SelectableNotifier {
   @override
   SudokuGameState build() {
+    ref.keepAlive();
     return SudokuGameState.empty();
   }
 
   @override
   void updateWith(SudokuGameState Function(SudokuGameState value) block) {
     super.updateWith(block);
-    ref.read(appPersistenceProvider).setGameState(state);
+    _saveGameState(ref, state);
   }
 }
 
-/// 数独是否加载完毕
-bool watchSudokuIsEmpty(WidgetRef ref) {
-  return ref.watch(_selectGameState(
-    (state) => state == SudokuGameState.empty(),
-  ));
-}
-
 /// 重新开始游戏
+///
+/// *会清除历史，并将这个状态作为历史记录下来*
 void actionRecreateGame(WidgetRef ref, SudokuLevel level) {
+  _clearGameHistory(ref);
   final newSudoku = ref.read(sudokuManagerProvider).createGame(level: level);
   ref.read(currentInputSudokuIndexProvider.notifier).clear();
   ref
       .read(currentSudokuGameStateProvider.notifier)
       .updateWith((state) => newSudoku);
+  _recordGameHistory(ref);
 }
 
 /// 重设游戏状态
+///
+/// *会记录到历史中*
 void actionResetGame(WidgetRef ref) {
   ref.read(currentSudokuGameStateProvider.notifier).updateWith((state) {
     return state.clearAll();
   });
+  _recordGameHistory(ref);
 }
 
 /// 观察数独数字表格的列数
