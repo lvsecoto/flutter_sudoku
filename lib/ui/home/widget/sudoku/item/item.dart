@@ -67,7 +67,11 @@ class _EditNumber extends ConsumerWidget {
     return InkWell(
       onTap: canEdit
           ? () {
-              provider.actionSelectSudokuIndex(ref, index);
+              if (provider.watchIsSudokuEraseMode(ref)) {
+                provider.actionEraseSudokuNumberAtIndex(ref, index);
+              } else {
+                provider.actionSelectSudokuIndex(ref, index);
+              }
             }
           : null,
       child: child,

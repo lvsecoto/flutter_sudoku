@@ -15,6 +15,7 @@ part 'input.dart';
 part 'state.dart';
 part 'history.dart';
 part 'restore.dart';
+part 'erase.dart';
 
 part 'provider.g.dart';
 part 'provider.freezed.dart';

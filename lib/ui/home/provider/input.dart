@@ -7,6 +7,8 @@ class CurrentInputSudokuIndex extends _$CurrentInputSudokuIndex
   @override
   SudokuIndex? build() {
     ref.keepAlive();
+
+    // todo 和[restoreGameState冲突了]
     final appPersistence = ref.read(appPersistenceProvider);
     ref.listen(currentSudokuGameStateProvider, (prev, next) {
       if (prev?.id != next.id) {
@@ -19,7 +21,7 @@ class CurrentInputSudokuIndex extends _$CurrentInputSudokuIndex
         } else {
           // 每当有新游戏，自动找到第一个空白项，作为初次输入的数独索引
           final firstEmptyIndex =
-          next.puzzle.masked.numbers.indexWhere((it) => it == null);
+              next.puzzle.masked.numbers.indexWhere((it) => it == null);
           state = SudokuIndex(matrix: next.matrix, index: firstEmptyIndex);
         }
       }
@@ -36,7 +38,12 @@ class CurrentInputSudokuIndex extends _$CurrentInputSudokuIndex
 }
 
 /// 观察数独索引[index]是否正在被编辑中
+///
+/// 在擦除模式下，不能编辑
 bool watchIsSudokuIndexEditing(WidgetRef ref, SudokuIndex index) {
+  if (ref.watch(isSudokuEraseModeProvider)) {
+    return false;
+  }
   return ref.watch(currentInputSudokuIndexProvider.select((it) => it == index));
 }
 

@@ -440,7 +440,7 @@ final currentInputSudokuIndexProvider =
 
 typedef _$CurrentInputSudokuIndex = AutoDisposeNotifier<SudokuIndex?>;
 String _$currentSudokuGameHistoryStackHash() =>
-    r'65fb114decfc422dd8af75a988f991d462d3f9f7';
+    r'154af1dc8b61170bd994de89bc1b36b31dc59389';
 
 /// See also [CurrentSudokuGameHistoryStack].
 @ProviderFor(CurrentSudokuGameHistoryStack)
@@ -457,5 +457,23 @@ final currentSudokuGameHistoryStackProvider = AutoDisposeNotifierProvider<
 
 typedef _$CurrentSudokuGameHistoryStack
     = AutoDisposeNotifier<SudokuGameHistoryStack>;
+String _$isSudokuEraseModeHash() => r'0687674176e4e76345d025336a8b52c3367b6010';
+
+/// 是否是擦除模式
+///
+/// Copied from [IsSudokuEraseMode].
+@ProviderFor(IsSudokuEraseMode)
+final isSudokuEraseModeProvider =
+    AutoDisposeNotifierProvider<IsSudokuEraseMode, bool>.internal(
+  IsSudokuEraseMode.new,
+  name: r'isSudokuEraseModeProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$isSudokuEraseModeHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$IsSudokuEraseMode = AutoDisposeNotifier<bool>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

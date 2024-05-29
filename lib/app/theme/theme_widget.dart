@@ -18,13 +18,14 @@ class ThemeWidget extends StatelessWidget {
   /// 生成以[primaryColor]为主色调的颜色主题
   ThemeData _buildTheme(Color primaryColor) {
     const colorSeed = Colors.lightBlue;
+    final colorScheme = ColorScheme.fromSeed(
+      seedColor: colorSeed,
+    );
     return ThemeData(
-      colorSchemeSeed: colorSeed,
+      colorScheme: colorScheme,
       useMaterial3: true,
       snackBarTheme: const SnackBarThemeData(
-        behavior: SnackBarBehavior.floating,
-        showCloseIcon: true
-      ),
+          behavior: SnackBarBehavior.floating, showCloseIcon: true),
       extensions: [AppTheme.from(colorSeed: colorSeed)],
     );
   }
